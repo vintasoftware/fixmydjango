@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class='row'>
+
+  <div class='col-md-12'>
+  	<h1>{{ error.exception_type }}</h1>
+  	<h3>{{ error.error_message }}</h3>
+  	<pre> {{ error.traceback }} </pre>
+  </div>
+
+  <div class='col-md-12'>
+  <h3>Answers</h3>
+  	{% for answer in error.answers.all %}
+  		{{ answer.message|safe }}
+  	{% endfor %}
+  </div>
+
+</div>
+{% endblock content %}

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+  <title>Fix My Django!</title>
+</head>
+
+<body>
+    <div class="navbar navbar-inverse">
+      <div class="navbar-inner">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-6">
+            <h4><a class="brand" href="/">Fix My Django!</a></h4>
+            </div>
+            <div class="col-md-6">
+              {% block search %}
+              {% endblock search %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class='container'>
+      {% block content %}
+      {% endblock content %}
+    </div>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
+</body>
+</html>
