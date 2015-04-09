@@ -14,6 +14,8 @@ class Migration(migrations.Migration):
             name='Answer',
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('message', models.TextField()),
+                ('date', models.DateTimeField(auto_now=True)),
             ],
         ),
         migrations.CreateModel(
