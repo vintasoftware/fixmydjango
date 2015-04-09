@@ -5,6 +5,6 @@ from django.contrib import admin
 
 
 urlpatterns = patterns('',
-    url(r'^error/', include('errors.urls')),
+    url(r'^', include('errors.urls', namespace='errors')),
     url(r'^admin/', include(admin.site.urls)),
 )
