@@ -5,12 +5,12 @@
 
   <div class='col-md-12'>
   	<h1>{{ error.exception_type }}</h1>
-  	<h3>{{ error.error_message }}</h3>
-  	<pre> {{ error.traceback }} </pre>
+  	<h4>{{ error.error_message }}</h4>
+  	<pre><code>{{ error.traceback }}</code></pre>
   </div>
 
   <div class='col-md-12'>
-  <h3>Answers</h3>
+  <h3>How to fix</h3>
   	{% for answer in error.answers.all %}
   		{{ answer.message|safe }}
   	{% endfor %}
