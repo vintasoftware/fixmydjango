@@ -15,24 +15,11 @@
 
 <div class="row">
   <div class="col-md-12">
-    <div class="accordion" id="accordion2">
-    {% for exception_type, errors in errors_filter.items %}
-        <div class="accordion-group">
-          <div class="accordion-heading">
-            <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapse-{{ exception_type }}">
-              <h1> {{ exception_type }} </h1>
-            </a>
-          </div>
-          <div id="collapse-{{ exception_type }}" class="accordion-body collapse">
-            {% for error in errors %}
-              <div class="accordion-inner">
-                <a href="{% url 'errors:detail' error.pk %}">{{ error.error_message }}</a>
-              </div>
-            {% endfor %}
-          </div>
-        </div>
-      {% endfor %}
-    </div>
+    {% for error in error_list %}
+      <a href="{% url 'errors:detail' error.pk %}">
+        <h2> {{ error.exception_type }} - {{ error.error_message }} </h2>
+      </a>
+    {% endfor %}
   </div>
 </div>
 
