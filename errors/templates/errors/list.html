@@ -1,11 +1,13 @@
 {% extends 'base.html' %}
 
+{% load widget_tweaks %}
+
 {% block search %}
-<form class="navbar-search pull-left" action="" method="get">
+<form class="navbar-form navbar-left pull-left" role="search" action="" method="get">
     <div class="form-group">
-        {{ filter.form.exception_type }}
-        <button class="btn btn-primary" type="submit" >Fix it!</button>
+        {{ filter.form.exception_type|add_class:'text form-control'|attr:'placeholder:Search' }}
     </div>
+    <button class="btn btn-primary" type="submit" >Fix it!</button>
 </form>
 {% endblock search %}
 
