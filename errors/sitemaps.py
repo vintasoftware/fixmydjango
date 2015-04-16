@@ -3,7 +3,7 @@
 from django.contrib.sitemaps import Sitemap
 from django.core.urlresolvers import reverse
 
-from .models import Error
+from .models import Answer, Error
 
 
 class ErroSitemap(Sitemap):
@@ -14,3 +14,8 @@ class ErroSitemap(Sitemap):
 
 	def location(self, item):
 		return reverse('errors:detail', args=(item.id,))
+
+	def lastmod(self, item):
+		last_answer = Answer.objects.filter(error=item)
+		if last_answer:
+			return sorted(last_answer)[-1].date
