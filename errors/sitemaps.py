@@ -7,7 +7,7 @@ from .models import Answer, Error
 
 
 class ErrorSitemap(Sitemap):
-	changfreq = 'yearly'
+	changfreq = 'always'
 
 	def items(self):
 		return Error.objects.all()
