@@ -4,12 +4,12 @@ from django.contrib import admin
 from django.conf.urls import patterns, include, url
 from django.contrib.sitemaps.views import sitemap
 
-from errors.sitemaps import ErroSitemap
+from errors.sitemaps import ErrorSitemap
 
 
 urlpatterns = patterns('',
     url(r'^', include('errors.urls', namespace='errors')),
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^sitemap\.xml$', sitemap, {'sitemaps': {'error': ErroSitemap}},
+    url(r'^sitemap\.xml$', sitemap, {'sitemaps': {'error': ErrorSitemap}},
     name='django.contrib.sitemaps.views.sitemap')
 )

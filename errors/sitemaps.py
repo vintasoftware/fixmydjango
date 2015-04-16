@@ -6,7 +6,7 @@ from django.core.urlresolvers import reverse
 from .models import Answer, Error
 
 
-class ErroSitemap(Sitemap):
+class ErrorSitemap(Sitemap):
 	changfreq = 'yearly'
 
 	def items(self):
