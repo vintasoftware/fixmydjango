@@ -6,3 +6,4 @@ django-wysiwyg==0.7.0
 model-mommy==1.2.4
 six==1.9.0
 wsgiref==0.1.2
+gunicorn==19.3.0
