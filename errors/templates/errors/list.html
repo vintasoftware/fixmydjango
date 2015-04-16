@@ -2,7 +2,15 @@
 
 {% load widget_tweaks %}
 
+{% block metatags %}
+{% for name, content in metatags.items %}
+  <meta name="{{ name }}" content="{{ content }}" />
+{% endfor %}
+{% endblock metatags %}
+
+
 {% block search %}
+
 <form class="navbar-form navbar-left pull-left" role="search" action="" method="get">
     <div class="form-group">
         {{ filter.form.exception_type|add_class:'text form-control'|attr:'placeholder:Search' }}

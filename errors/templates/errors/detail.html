@@ -1,5 +1,16 @@
 {% extends 'base.html' %}
 
+  {% block title %}
+    <title>Fix My Django - {{ error.exception_type }}</title>
+  {% endblock title %}
+
+{% block metatags %}
+{% for name, content in metatags.items %}
+  <meta name="{{ name }}" content="{{ content }}" />
+{% endfor %}
+{% endblock metatags %}
+
+
 {% block content %}
 <div class='row'>
 
