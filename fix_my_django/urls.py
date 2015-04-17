@@ -16,6 +16,8 @@ urlpatterns = patterns('',
     # SEO
     url(r'^sitemap\.xml$', sitemap, {'sitemaps': {'error': ErrorSitemap}},
         name='django.contrib.sitemaps.views.sitemap'),
-    url(r'^google44a604e6db8d2224\.html$',
-        TemplateView.as_view(template_name='gwm-verify.html'), name='gwm-verify')
+    url(r'^google44a604e6db8d2224\.html$', TemplateView.as_view(
+        template_name='gwm-verify.html'), name='gwm-verify'),
+    url(r'^robots\.txt$',TemplateView.as_view(
+        template_name='robots.txt'), name='robots-txt')
 )
