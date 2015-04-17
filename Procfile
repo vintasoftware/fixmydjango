@@ -1,1 +1,1 @@
-web: gunicorn fix_my_django.wsgi -w 3 --log-level info
+web: gunicorn fix_my_django.wsgi
