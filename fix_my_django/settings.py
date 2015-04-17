@@ -32,6 +32,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
+LOCAL = 'IN_HEROKU' not in os.environ
+
 
 # Application definition
 
@@ -94,7 +96,8 @@ DATABASES = {
     }
 }
 
-DATABASES['default'] =  dj_database_url.config()
+if not LOCAL:
+    DATABASES['default'] =  dj_database_url.config()
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.8/topics/i18n/
