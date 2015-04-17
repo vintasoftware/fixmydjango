@@ -15,6 +15,7 @@ class ErrorListView(FilterView):
 
     def get_context_data(self, **kwargs):
         context = super(ErrorListView, self).get_context_data(**kwargs)
+        exception_list = []
         exception_list = context['error_list'].values('exception_type')
         description =  map(lambda x: x['exception_type'], exception_list)
         context['metatags'] = {'description': ','.join(description)}
