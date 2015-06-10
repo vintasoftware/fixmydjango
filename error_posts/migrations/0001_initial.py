@@ -19,18 +19,18 @@ class Migration(migrations.Migration):
             ],
         ),
         migrations.CreateModel(
-            name='Error',
+            name='ErrorPost',
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
                 ('exception_type', models.CharField(max_length=80)),
                 ('error_message', models.TextField()),
                 ('traceback', models.TextField()),
-                ('django_version', models.CharField(max_length=5, choices=[(b'1_2', b'1.2')])),
+                ('django_version', models.CharField(max_length=5, choices=[(b'1.2', b'1.2'), (b'1.3', b'1.3'), (b'1.4', b'1.4'), (b'1.5', b'1.5'), (b'1.6', b'1.6'), (b'1.7', b'1.7'), (b'1.8', b'1.8')])),
             ],
         ),
         migrations.AddField(
             model_name='answer',
             name='error',
-            field=models.ForeignKey(related_name='answers', to='errors.Error'),
+            field=models.ForeignKey(related_name='answers', to='error_posts.ErrorPost'),
         ),
     ]

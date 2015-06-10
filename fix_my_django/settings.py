@@ -15,7 +15,8 @@ import os
 import dj_database_url
 
 
-BASE_DIR = os.path.dirname(__file__)
+BASE_DIR = os.path.dirname(os.path.dirname(__file__))
+
 
 def base_dir_join(*args):
     return os.path.join(BASE_DIR, *args)
@@ -45,13 +46,13 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.sitemaps',
-    
+
     'django_filters',
     'django_wysiwyg',
     'widget_tweaks',
 
     # Apps
-    'errors',
+    'error_posts',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -92,12 +93,12 @@ WSGI_APPLICATION = 'fix_my_django.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'NAME': base_dir_join('db.sqlite3'),
     }
 }
 
 if not LOCAL:
-    DATABASES['default'] =  dj_database_url.config()
+    DATABASES['default'] = dj_database_url.config()
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.8/topics/i18n/

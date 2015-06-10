@@ -5,7 +5,7 @@ from django.db import models
 from .choices import DJANGO_VERSIONS
 
 
-class Error(models.Model):
+class ErrorPost(models.Model):
     exception_type = models.CharField(max_length=80)
     error_message = models.TextField()
     traceback = models.TextField()
@@ -18,6 +18,6 @@ class Error(models.Model):
 
 
 class Answer(models.Model):
-    error = models.ForeignKey(Error, related_name='answers')
+    error = models.ForeignKey(ErrorPost, related_name='answers')
     message = models.TextField()
     date = models.DateTimeField(auto_now=True)
