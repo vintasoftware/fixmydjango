@@ -47,6 +47,8 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'django.contrib.sitemaps',
 
+    'djangobower',
+    'compressor',
     'django_filters',
     'django_wysiwyg',
     'widget_tweaks',
@@ -123,4 +125,29 @@ STATIC_ROOT = base_dir_join('staticfiles')
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
     'django.contrib.staticfiles.finders.FileSystemFinder',
+
+    'djangobower.finders.BowerFinder',
+    'compressor.finders.CompressorFinder',
+)
+
+
+# Bower
+
+BOWER_COMPONENTS_ROOT = base_dir_join('components')
+
+BOWER_INSTALLED_APPS = (
+    'bootstrap-sass-official#3.3.1',
+)
+
+# Compressor
+
+COMPRESS_ENABLED = True
+COMPRESS_URL = STATIC_URL
+
+COMPRESS_PRECOMPILERS = (
+    ('text/x-scss', 'fix_my_django.compressor_filters.PatchedSCSSCompiler'),
+)
+
+COMPRESS_CSS_FILTERS = (
+    'fix_my_django.compressor_filters.CustomCssAbsoluteFilter',
 )

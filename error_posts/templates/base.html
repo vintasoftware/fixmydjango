@@ -1,19 +1,23 @@
 {% load staticfiles %}
+{% load compress %}
 
 <!DOCTYPE html>
 <html>
 <head>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-  <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
   {% block title %}
     <title>Fix My Django!</title>
   {% endblock title %}
-  
+
   <meta charset="utf-8">
+
+  {% compress css %}
+    <link rel="stylesheet" type="text/x-scss" href="{% static 'sass/app.scss' %}">
+  {% endcompress %}
+
   <meta property="og:image" content="https://www.djangoproject.com/s/img/icon-touch.e4872c4da341.png" />
+
   {% block metatags %}
   {% endblock metatags %}
-
 </head>
 
 <body>
