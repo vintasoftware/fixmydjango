@@ -22,13 +22,15 @@
 {% block content %}
 
 <div class="row">
-  <div itemscope itemtype="http://schema.org/ItemList" class="col-md-12" >
-    {% for error_post in errorpost_list %}
-        <a href="{% url 'error_posts:detail' error_post.pk %}">
-          <h2 itemprop="name"> {{ error_post.exception_type }} - </h2>
-          <h2 itemprop="description">{{ error_post.error_message }}</h2>
+  <div class="col-md-12">
+    <ul class="list-group" itemscope itemtype="http://schema.org/ItemList">
+      {% for error_post in errorpost_list %}
+        <a href="{% url 'error_posts:detail' error_post.pk %}" class="list-group-item">
+          <h4 class="list-group-item-heading">{{ error_post.exception_type }}</h4>
+          <p class="list-group-item-text">{{ error_post.error_message }}</p>
         </a>
-    {% endfor %}
+      {% endfor %}
+    </ul>
   </div>
 </div>
 

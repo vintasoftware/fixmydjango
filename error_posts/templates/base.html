@@ -22,7 +22,7 @@
 </head>
 
 <body>
-  <div class="navbar navbar-default navbar-fixed-top">
+  <header class="navbar navbar-default navbar-fixed-top">
     <div class="container">
       <div class="navbar-header">
         <a href="{% url 'error_posts:list' %}" class="navbar-brand"><i class="fa fa-magic"></i> Fix my Django</a>
@@ -48,8 +48,8 @@
         </ul>
       </div>
     </div>
-  </div>
-  <div class='container'>
+  </header>
+  <div class='container content-container'>
     {% block content %}
     {% endblock content %}
   </div>
