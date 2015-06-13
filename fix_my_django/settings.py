@@ -137,7 +137,7 @@ STATICFILES_FINDERS = (
 BOWER_COMPONENTS_ROOT = base_dir_join('components')
 
 BOWER_INSTALLED_APPS = (
-    'bootstrap-sass-official#3.3.1',
+    'bootstrap-sass-official#3.3.4',
     'jquery#2.1.4',
     'font-awesome#4.3.0',
 )
