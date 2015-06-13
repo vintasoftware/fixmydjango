@@ -40,6 +40,9 @@ $navbar-default-toggle-icon-bar-bg: white;
 }
 
 .content-container {
-  margin-top: $navbar-height;
-  padding-top: 30px;
+  margin-top: $navbar-height + 20px;
+}
+
+.error-post-list-row {
+  margin-top: 10px;
 }
