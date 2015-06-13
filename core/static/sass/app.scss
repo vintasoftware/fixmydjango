@@ -1,0 +1,40 @@
+$icon-font-path: "../bootstrap-sass-official/assets/fonts/bootstrap/";
+
+$django-light-green: #C9F0DD;
+$django-green: #44B78B;
+$django-dark-green: #0C4B33;
+$nav-link-hover-bg: transparent;
+$nav-tabs-active-link-hover-bg: transparent;
+$navbar-height: 60px;
+$navbar-padding-vertical: 20px;
+$navbar-default-bg: $django-dark-green;
+$navbar-default-border: $django-green;
+$navbar-default-brand-color: white;
+$navbar-default-brand-hover-color: $django-green;
+$navbar-default-color: white;
+$navbar-default-link-color: white;
+$navbar-default-link-hover-color: $django-light-green;
+$navbar-default-link-actie-color: $django-light-green;
+$navbar-default-toggle-border-color: white;
+$navbar-default-toggle-hover-bg: transparent;
+$navbar-default-toggle-icon-bar-bg: white;
+
+@import "bootstrap-sass-official/assets/stylesheets/bootstrap";
+@import "sass/bootswatch-lumen/_bootswatch.scss";
+@import "sass/bootswatch-lumen/_variables.scss";
+
+.navbar {
+  border-width: 0 0 4px 0;
+
+  .navbar-brand {
+    padding-top: 15px;
+
+    .fa-magic {
+      font-size: 32px;
+      color: #44B78B;
+      display: inline-block;
+      vertical-align: middle;
+      padding-right: 6px;
+    }
+  }
+}

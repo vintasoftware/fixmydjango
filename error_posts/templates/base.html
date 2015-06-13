@@ -12,6 +12,7 @@
 
   {% compress css %}
     <link rel="stylesheet" type="text/x-scss" href="{% static 'sass/app.scss' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'font-awesome/css/font-awesome.min.css' %}">
   {% endcompress %}
 
   <meta property="og:image" content="https://www.djangoproject.com/s/img/icon-touch.e4872c4da341.png" />
@@ -21,25 +22,37 @@
 </head>
 
 <body>
-    <div class="navbar navbar-inverse">
-      <div class="navbar-inner">
-        <div class="container">
-          <div class="row">
-            <div class="col-md-6">
-            <h4><a class="brand" href="/">Fix My Django!</a></h4>
-            </div>
-            <div class="col-md-6">
-              {% block search %}
-              {% endblock search %}
-            </div>
-          </div>
-        </div>
+  <div class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <a href="{% url 'error_posts:list' %}" class="navbar-brand"><i class="fa fa-magic"></i> Fix my Django</a>
+        <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+      <div class="navbar-collapse collapse" id="navbar-main">
+        <ul class="nav navbar-nav">
+          <li>
+            <a href="./help/">Help</a>
+          </li>
+          <li>
+            <a href="http://news.bootswatch.com">Blog</a>
+          </li>
+        </ul>
+
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="http://builtwithbootstrap.com/" target="_blank">Built With Bootstrap</a></li>
+          <li><a href="https://wrapbootstrap.com/?ref=bsw" target="_blank">WrapBootstrap</a></li>
+        </ul>
       </div>
     </div>
-    <div class='container'>
-      {% block content %}
-      {% endblock content %}
-    </div>
+  </div>
+  <div class='container'>
+    {% block content %}
+    {% endblock content %}
+  </div>
 
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
