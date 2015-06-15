@@ -50,8 +50,8 @@ INSTALLED_APPS = (
     'djangobower',
     'compressor',
     'django_filters',
-    'django_wysiwyg',
     'widget_tweaks',
+    'django_markdown',
 
     # Apps
     'core',

@@ -4,6 +4,7 @@ from django.db import models
 from django.core.exceptions import ValidationError
 
 from model_utils.models import TimeStampedModel
+from django_markdown.models import MarkdownField
 
 from .choices import DJANGO_VERSIONS
 from .sanitize import sanitize_traceback
@@ -35,5 +36,5 @@ class ErrorPost(TimeStampedModel):
 
 class Answer(TimeStampedModel):
     error = models.ForeignKey(ErrorPost, related_name='answers')
-    message = models.TextField()
+    message = MarkdownField()
     date = models.DateTimeField(auto_now=True)

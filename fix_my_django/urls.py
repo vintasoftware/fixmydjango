@@ -10,8 +10,10 @@ from error_posts.sitemaps import ErrorPostSitemap
 
 
 urlpatterns = patterns('',
-    url(r'^', include('error_posts.urls', namespace='error_posts')),
+    url(r'^markdown/', include('django_markdown.urls')),
     url(r'^admin/', include(admin.site.urls)),
+
+    url(r'^', include('error_posts.urls', namespace='error_posts')),
 
     # SEO
     url(r'^sitemap\.xml$', sitemap, {'sitemaps': {'error': ErrorPostSitemap}},

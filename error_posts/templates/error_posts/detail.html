@@ -1,8 +1,10 @@
 {% extends 'base.html' %}
 
-  {% block title %}
-    <title>Fix My Django - {{ errorpost.exception_type }}</title>
-  {% endblock title %}
+{% load django_markdown %}
+
+{% block title %}
+  <title>Fix My Django - {{ errorpost.exception_type }}</title>
+{% endblock title %}
 
 {% block metatags %}
 {% for name, content in metatags.items %}
@@ -15,16 +17,16 @@
 <div class='row'>
 
   <div class='col-md-12'>
-  	<h1>{{ errorpost.exception_type }}</h1>
-  	<h4>{{ errorpost.error_message }}</h4>
-  	<pre><code>{{ errorpost.sanitized_traceback }}</code></pre>
+    <h1>{{ errorpost.exception_type }}</h1>
+    <h4>{{ errorpost.error_message }}</h4>
+    <pre><code>{{ errorpost.sanitized_traceback }}</code></pre>
   </div>
 
   <div class='col-md-12'>
   <h3>How to fix</h3>
-  	{% for answer in errorpost.answers.all %}
-  		{{ answer.message|safe }}
-  	{% endfor %}
+  {% for answer in errorpost.answers.all %}
+    {{ answer.message|markdown }}
+  {% endfor %}
   </div>
 
 </div>
