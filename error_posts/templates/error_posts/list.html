@@ -1,26 +1,40 @@
 {% extends 'base.html' %}
 
+{% load staticfiles %}
 {% load widget_tweaks %}
 
 {% block metatags %}
-{% for name, content in metatags.items %}
-  <meta name="{{ name }}" content="{{ content }}" />
-{% endfor %}
+  {% for name, content in metatags.items %}
+    <meta name="{{ name }}" content="{{ content }}" />
+  {% endfor %}
 {% endblock metatags %}
 
+{% block js %}
+  <script type="text/javascript" src="{% static 'error_posts/js/widgets.js' %}"></script>
+{% endblock %}
 
 {% block search %}
-
-<form class="navbar-form navbar-left pull-left" role="search" action="" method="get">
-    <div class="form-group">
-        {{ filter.form.exception_type|add_class:'text form-control'|attr:'placeholder:Search' }}
-    </div>
-    <button class="btn btn-primary" type="submit" >Fix it!</button>
-</form>
 {% endblock search %}
 
 {% block content %}
-
+<div class="row">
+  <div class="col-md-12">
+    <p class="lead">Fix my Django shows common Django exceptions and how to fix them. <br>Use the filters below to find the error you're having.</p>
+  </div>
+  <div class="col-md-12">
+    <form action="" method="get" class="list-filter-form form-inline">
+      <div class="form-group">
+        <label for="exception_type">Exception type:</label>
+        {% render_field filter.form.exception_type class+='form-control' %}
+      </div>
+      <div class="form-group">
+        <label for="exception_type">Message:</label>
+        {% render_field filter.form.search class+='text form-control' placeholder="ex: value too long" %}
+      </div>
+      <button class="btn btn-primary" type="submit" >Fix it!</button>
+    </form>
+  </div>
+</div>
 <div class="row error-post-list-row">
   <div class="col-md-12">
     <ul class="list-group" itemscope itemtype="http://schema.org/ItemList">

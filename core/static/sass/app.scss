@@ -22,6 +22,7 @@ $navbar-default-toggle-icon-bar-bg: white;
 @import "bootstrap-sass-official/assets/stylesheets/bootstrap";
 @import "sass/bootswatch-lumen/_bootswatch.scss";
 @import "sass/bootswatch-lumen/_variables.scss";
+@import "select2-bootstrap-theme/src/select2-bootstrap.scss";
 
 .navbar {
   border-width: 0 0 4px 0;
@@ -41,6 +42,16 @@ $navbar-default-toggle-icon-bar-bg: white;
 
 .content-container {
   margin-top: $navbar-height + 20px;
+}
+
+.list-filter-form {
+  .select2-container--bootstrap {
+    display: inline-block;
+  }
+
+  .form-group:not(:first-child) {
+    margin-left: 10px;
+  }
 }
 
 .error-post-list-row {

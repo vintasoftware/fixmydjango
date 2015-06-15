@@ -11,8 +11,9 @@
   <meta charset="utf-8">
 
   {% compress css %}
-    <link rel="stylesheet" type="text/x-scss" href="{% static 'sass/app.scss' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'font-awesome/css/font-awesome.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'select2/dist/css/select2.css' %}">
+    <link rel="stylesheet" type="text/x-scss" href="{% static 'sass/app.scss' %}">
   {% endcompress %}
 
   <meta property="og:image" content="https://www.djangoproject.com/s/img/icon-touch.e4872c4da341.png" />
@@ -35,16 +36,12 @@
       <div class="navbar-collapse collapse" id="navbar-main">
         <ul class="nav navbar-nav">
           <li>
-            <a href="./help/">Help</a>
-          </li>
-          <li>
-            <a href="http://news.bootswatch.com">Blog</a>
+            <a href="#">Help</a>
           </li>
         </ul>
 
         <ul class="nav navbar-nav navbar-right">
-          <li><a href="http://builtwithbootstrap.com/" target="_blank">Built With Bootstrap</a></li>
-          <li><a href="https://wrapbootstrap.com/?ref=bsw" target="_blank">WrapBootstrap</a></li>
+          <li><a href="http://www.vinta.com.br/" target="_blank">by Vinta Software Studio</a></li>
         </ul>
       </div>
     </div>
@@ -54,18 +51,22 @@
     {% endblock content %}
   </div>
 
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-62218429-1', 'auto');
+    ga('send', 'pageview');
+  </script>
+  {% compress js %}
+    <script type="text/javascript" src="{% static 'jquery/dist/jquery.js' %}"></script>
+    <script type="text/javascript" src="{% static 'bootstrap-sass-official/assets/javascripts/bootstrap.js' %}"></script>
+    <script type="text/javascript" src="{% static 'select2/dist/js/select2.js' %}"></script>
 
-  ga('create', 'UA-62218429-1', 'auto');
-  ga('send', 'pageview');
-
-</script>
+    {% block js %}
+    {% endblock %}
+  {% endcompress %}
 </body>
 </html>

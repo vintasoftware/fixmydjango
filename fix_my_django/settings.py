@@ -140,6 +140,8 @@ BOWER_INSTALLED_APPS = (
     'bootstrap-sass-official#3.3.4',
     'jquery#2.1.4',
     'font-awesome#4.3.0',
+    'select2#4.0.0',
+    'select2-bootstrap-theme#0.1.0-beta.3',
 )
 
 # Compressor
