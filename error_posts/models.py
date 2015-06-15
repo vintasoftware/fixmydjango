@@ -3,11 +3,13 @@
 from django.db import models
 from django.core.exceptions import ValidationError
 
+from model_utils.models import TimeStampedModel
+
 from .choices import DJANGO_VERSIONS
 from .sanitize import sanitize_traceback
 
 
-class ErrorPost(models.Model):
+class ErrorPost(TimeStampedModel):
     exception_type = models.CharField(max_length=80)
     error_message = models.TextField()
     traceback = models.TextField()
@@ -31,7 +33,7 @@ class ErrorPost(models.Model):
         super(ErrorPost, self).save(*args, **kwargs)
 
 
-class Answer(models.Model):
+class Answer(TimeStampedModel):
     error = models.ForeignKey(ErrorPost, related_name='answers')
     message = models.TextField()
     date = models.DateTimeField(auto_now=True)
