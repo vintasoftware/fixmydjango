@@ -34,8 +34,8 @@ class ErrorPost(TimeStampedModel):
 
     def save(self, *args, **kwargs):
         self.traceback = clean_traceback(self.traceback)
-        self.parsed_traceback = ParsedException.from_string(self.traceback).to_dict()
         self.sanitized_traceback = sanitize_traceback(self.traceback)
+        self.parsed_traceback = ParsedException.from_string(self.sanitized_traceback).to_dict()
         super(ErrorPost, self).save(*args, **kwargs)
 
 
