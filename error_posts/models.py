@@ -5,9 +5,11 @@ from django.core.exceptions import ValidationError
 
 from model_utils.models import TimeStampedModel
 from django_markdown.models import MarkdownField
+from jsonfield import JSONField
+from boltons.tbutils import ParsedException
 
 from .choices import DJANGO_VERSIONS
-from .sanitize import sanitize_traceback
+from .sanitize import clean_traceback, sanitize_traceback
 
 
 class ErrorPost(TimeStampedModel):
@@ -15,6 +17,7 @@ class ErrorPost(TimeStampedModel):
     error_message = models.TextField()
     traceback = models.TextField()
     sanitized_traceback = models.TextField()
+    parsed_traceback = JSONField()
     django_version = models.CharField(choices=DJANGO_VERSIONS, max_length=5)
 
     def __unicode__(self):
@@ -25,11 +28,13 @@ class ErrorPost(TimeStampedModel):
     def clean(self):
         if self.traceback:
             try:
-                sanitize_traceback(self.traceback)
+                clean_traceback(self.traceback)
             except ValueError as e:
-                raise ValidationError(e.message)
+                raise ValidationError({'traceback': e.message})
 
     def save(self, *args, **kwargs):
+        self.traceback = clean_traceback(self.traceback)
+        self.parsed_traceback = ParsedException.from_string(self.traceback).to_dict()
         self.sanitized_traceback = sanitize_traceback(self.traceback)
         super(ErrorPost, self).save(*args, **kwargs)
 
