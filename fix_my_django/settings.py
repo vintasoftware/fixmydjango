@@ -133,10 +133,6 @@ STATICFILES_FINDERS = (
     'compressor.finders.CompressorFinder',
 )
 
-STATICFILES_DIRS = (
-    base_dir_join('static'),
-)
-
 # Bower
 
 BOWER_COMPONENTS_ROOT = base_dir_join('components')
