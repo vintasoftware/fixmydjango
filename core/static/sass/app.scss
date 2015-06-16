@@ -19,10 +19,17 @@ $navbar-default-toggle-border-color: white;
 $navbar-default-toggle-hover-bg: transparent;
 $navbar-default-toggle-icon-bar-bg: white;
 
-@import "bootstrap-sass-official/assets/stylesheets/bootstrap";
-@import "sass/bootswatch-lumen/_bootswatch.scss";
 @import "sass/bootswatch-lumen/_variables.scss";
+@import "bootstrap-sass-official/assets/stylesheets/bootstrap.scss";
+@import "sass/bootswatch-lumen/_bootswatch.scss";
 @import "select2-bootstrap-theme/src/select2-bootstrap.scss";
+
+$form-control-default-box-shadow: inset 0 2px 0 rgba(0, 0, 0, .075);
+.select2-container--bootstrap {  // Fix for select2 to match bootswatch theme
+  .select2-selection {
+    @include bootstrap-input-defaults;
+  }
+}
 
 .navbar {
   border-width: 0 0 4px 0;
@@ -56,6 +63,19 @@ $navbar-default-toggle-icon-bar-bg: white;
 
 .error-post-list-row {
   margin-top: 10px;
+
+  a.list-group-item {
+    .list-group-item-heading {
+      color: $brand-danger;
+    }
+  }
+}
+
+.error-post-detail-row {
+  h2, h3 {
+    font-size: $font-size-h4;
+    margin-top: 0;
+  }
 }
 
 footer {

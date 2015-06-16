@@ -25,6 +25,12 @@ class ErrorPost(TimeStampedModel):
             self.pk, DJANGO_VERSIONS[self.django_version], self.exception_type
         )
 
+    @property
+    def raised_by(self):
+        if self.parsed_traceback:
+            filepath = self.parsed_traceback['frames'][-1]['filepath']
+            return filepath[filepath.index('django/'):]
+
     def clean(self):
         if self.traceback:
             try:
