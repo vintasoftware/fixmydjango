@@ -20,8 +20,8 @@ class ErrorPostAdmin(admin.ModelAdmin):
     readonly_fields = ['sanitized_traceback_html', 'parsed_traceback_html']
 
     def sanitized_traceback_html(self, instance):
-        return instance.sanitized_traceback
-    sanitized_traceback_html.allow_tags = False
+        return '<br><br><pre>{}</pre>'.format(instance.sanitized_traceback)
+    sanitized_traceback_html.allow_tags = True
 
     def parsed_traceback_html(self, instance):
         return '<br><br><pre>{}</pre>'.format(json.dumps(instance.parsed_traceback, indent=2))
