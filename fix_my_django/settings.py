@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/1.8/ref/settings/
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
 import dj_database_url
+from decouple import config, Csv
 
 
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
@@ -26,12 +27,12 @@ def base_dir_join(*args):
 # See https://docs.djangoproject.com/en/1.8/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '+jno(3dwnsd%udqda)-9g1ng#l#gbyxy1r0dwxi3hbz*wx#wa*'
+SECRET_KEY = config('SECRET_KEY', default='+jno(3dwnsd%udqda)-9g1ng#l#gbyxy1r0dwxi3hbz*wx#wa*')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = config('DEBUG', default=True, cast=bool)
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = config('ALLOWED_HOSTS', default='*', cast=Csv())
 
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
