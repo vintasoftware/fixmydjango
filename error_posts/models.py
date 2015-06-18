@@ -20,7 +20,7 @@ class ErrorPost(TimeStampedModel):
     sanitized_traceback = models.TextField()
     parsed_traceback = JSONField()
     django_version = models.CharField(choices=DJANGO_VERSIONS, max_length=5)
-    how_to_reproduce = MarkdownField()
+    how_to_reproduce = MarkdownField(blank=True)
     is_published = models.BooleanField(default=False)
 
     objects = models.Manager()

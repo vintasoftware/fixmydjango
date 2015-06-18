@@ -25,6 +25,7 @@
     </div>
     <pre id="full-traceback" class="collapse"><code>{{ errorpost.sanitized_traceback }}</code></pre>
   </div>
+  {% if errorpost.how_to_reproduce %}
   <div class='col-md-12'>
     <div class="panel panel-primary">
       <div class="panel-heading">
@@ -35,6 +36,7 @@
       </div>
     </div>
   </div>
+  {% endif %}
   <div class='col-md-12'>
     <div class="panel panel-success">
       <div class="panel-heading">
