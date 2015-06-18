@@ -19,6 +19,7 @@ class ErrorPost(TimeStampedModel):
     sanitized_traceback = models.TextField()
     parsed_traceback = JSONField()
     django_version = models.CharField(choices=DJANGO_VERSIONS, max_length=5)
+    how_to_reproduce = MarkdownField()
 
     def __unicode__(self):
         return '{} - Version: {} - Exception type: {}'.format(

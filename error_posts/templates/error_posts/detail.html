@@ -16,16 +16,38 @@
 {% block content %}
 <div class='row error-post-detail-row'>
   <div class='col-md-12'>
-    <h1 class="text-danger">{{ errorpost.exception_type }} <span class="small">{{ errorpost.error_message }}</span></h1>
-    <h3>Raised by: {{ errorpost.raised_by }}</h3>
-    <pre><code>{{ errorpost.sanitized_traceback }}</code></pre>
+    <h1 class="h2 text-danger">{{ errorpost.exception_type }} <span class="small">{{ errorpost.error_message }}</span></h1>
+    <div class="h3 raised-by-wrapper">
+      Raised by: <h2 class="h3"><code>{{ errorpost.raised_by }}</code></h2>
+      <button class="btn btn-default btn-xs" role="button" data-toggle="collapse" href="#full-traceback" aria-expanded="false" aria-controls="full-traceback">
+        Show/Hide full traceback
+      </button>
+    </div>
+    <pre id="full-traceback" class="collapse">
+      <code>{{ errorpost.sanitized_traceback }}</code>
+    </pre>
   </div>
-
   <div class='col-md-12'>
-  <h2>How to fix</h2>
-  {% for answer in errorpost.answers.all %}
-    {{ answer.message|markdown }}
-  {% endfor %}
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <h3 class="panel-title">How to reproduce</h3>
+      </div>
+      <div class="panel-body">
+        {{ errorpost.how_to_reproduce|markdown }}
+      </div>
+    </div>
+  </div>
+  <div class='col-md-12'>
+    <div class="panel panel-success">
+      <div class="panel-heading">
+        <h2 class="panel-title">How to fix</h2>
+      </div>
+      <div class="panel-body">
+        {% for answer in errorpost.answers.all %}
+          {{ answer.message|markdown }}
+        {% endfor %}
+      </div>
+    </div>
   </div>
 </div>
 {% endblock content %}

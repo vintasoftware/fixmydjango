@@ -8,7 +8,6 @@ $nav-tabs-active-link-hover-bg: transparent;
 $navbar-height: 60px;
 $navbar-padding-vertical: 20px;
 $navbar-default-bg: $django-dark-green;
-$navbar-default-border: $django-green;
 $navbar-default-brand-color: white;
 $navbar-default-brand-hover-color: $django-green;
 $navbar-default-color: white;
@@ -72,9 +71,12 @@ $form-control-default-box-shadow: inset 0 2px 0 rgba(0, 0, 0, .075);
 }
 
 .error-post-detail-row {
-  h3 {
-    font-size: $font-size-h4;
+  .raised-by-wrapper {
     margin-top: 0;
+
+    h2 {
+      display: inline;
+    }
   }
 }
 
