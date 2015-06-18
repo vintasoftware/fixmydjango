@@ -1,5 +1,7 @@
 import re
 
+from boltons.tbutils import ParsedException
+
 
 _exception_re = re.compile(r'\w+: .*')
 
@@ -13,8 +15,16 @@ def clean_traceback(tb):
                     if tb_line.strip()]
 
     # check conditions
-    last_deps_line = all_tb_lines[-3]
-    django_index = last_deps_line.find('/django')
+    first_line = all_tb_lines[0]
+    first_line_should_be = 'Traceback (most recent call last):'
+    if first_line != first_line_should_be:
+        raise ValueError(
+            "Malformed traceback: first line must be "
+            "exactly equal to '{}' "
+            "(no spaces around)".format(first_line_should_be))
+
+    last_file_line = all_tb_lines[-3]
+    django_index = last_file_line.find('/django')
     if django_index == -1:
         raise ValueError(
             "Invalid traceback: exception not thrown by Django")
@@ -26,7 +36,10 @@ def clean_traceback(tb):
             "Malformed traceback: last line must be "
             "exception type and message")
 
-    return '\n'.join(all_tb_lines)
+    # try to parse
+    tb = '\n'.join(all_tb_lines)
+    ParsedException.from_string(tb)
+    return tb
 
 
 def sanitize_traceback(clean_tb):
