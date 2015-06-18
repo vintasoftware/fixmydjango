@@ -10,6 +10,7 @@ from boltons.tbutils import ParsedException
 
 from .choices import DJANGO_VERSIONS
 from .sanitize import clean_traceback, sanitize_traceback
+from .managers import ErrorPostPublishedManager
 
 
 class ErrorPost(TimeStampedModel):
@@ -20,6 +21,10 @@ class ErrorPost(TimeStampedModel):
     parsed_traceback = JSONField()
     django_version = models.CharField(choices=DJANGO_VERSIONS, max_length=5)
     how_to_reproduce = MarkdownField()
+    is_published = models.BooleanField(default=False)
+
+    objects = models.Manager()
+    publisheds = ErrorPostPublishedManager()
 
     def __unicode__(self):
         return u'{} - Version: {} - Exception type: {}'.format(

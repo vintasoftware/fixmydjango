@@ -10,8 +10,10 @@ from .filtersets import ErrorPostFilter
 
 class ErrorPostListView(FilterView):
     template_name = 'error_posts/list.html'
-    model = ErrorPost
     filterset_class = ErrorPostFilter
+
+    def get_queryset(self):
+        return ErrorPost.publisheds.all()
 
     def get_context_data(self, **kwargs):
         context = super(ErrorPostListView, self).get_context_data(**kwargs)
@@ -24,7 +26,9 @@ class ErrorPostListView(FilterView):
 
 class ErrorPostDetailView(DetailView):
     template_name = 'error_posts/detail.html'
-    model = ErrorPost
+
+    def get_queryset(self):
+        return ErrorPost.publisheds.all()
 
     def get_context_data(self, **kwargs):
         context = super(ErrorPostDetailView, self).get_context_data(**kwargs)
