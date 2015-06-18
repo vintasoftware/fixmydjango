@@ -22,7 +22,7 @@ class ErrorPost(TimeStampedModel):
     how_to_reproduce = MarkdownField()
 
     def __unicode__(self):
-        return '{} - Version: {} - Exception type: {}'.format(
+        return u'{} - Version: {} - Exception type: {}'.format(
             self.pk, DJANGO_VERSIONS[self.django_version], self.exception_type
         )
 
@@ -50,3 +50,8 @@ class Answer(TimeStampedModel):
     error = models.ForeignKey(ErrorPost, related_name='answers')
     message = MarkdownField()
     date = models.DateTimeField(auto_now=True)
+
+    def __unicode__(self):
+        return u'{} - Answer to [{}]'.format(
+            self.pk, self.error
+        )
