@@ -18,7 +18,7 @@
   <div class='col-md-12'>
     <h1 class="h2 text-danger">{{ errorpost.exception_type }} <span class="small">{{ errorpost.error_message }}</span></h1>
     <div class="h3 raised-by-wrapper">
-      Raised by: <h2 class="h3"><code>{{ errorpost.raised_by }}</code></h2>
+      Raised by: <h2 class="h3"><code>{{ errorpost.raised_by }}</code> (line {{ errorpost.raised_by_line }})</h2>
       <button class="btn btn-default btn-xs" role="button" data-toggle="collapse" href="#full-traceback" aria-expanded="false" aria-controls="full-traceback">
         Show/Hide full traceback
       </button>

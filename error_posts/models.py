@@ -26,11 +26,24 @@ class ErrorPost(TimeStampedModel):
             self.pk, DJANGO_VERSIONS[self.django_version], self.exception_type
         )
 
+    def _last_frame(self):
+        if self.parsed_traceback:
+            return self.parsed_traceback['frames'][-1]
+
     @property
     def raised_by(self):
-        if self.parsed_traceback:
-            filepath = self.parsed_traceback['frames'][-1]['filepath']
+        last_frame = self._last_frame()
+
+        if last_frame:
+            filepath = last_frame['filepath']
             return filepath[filepath.index('django/'):]
+
+    @property
+    def raised_by_line(self):
+        last_frame = self._last_frame()
+
+        if last_frame:
+            return last_frame['lineno']
 
     def clean(self):
         if self.traceback:
