@@ -8,8 +8,8 @@ from django_markdown.models import MarkdownField
 from jsonfield import JSONField
 from boltons.tbutils import ParsedException
 
+from fixmydjango.sanitize_tb import clean_traceback, sanitize_traceback
 from .choices import DJANGO_VERSIONS
-from .sanitize import clean_traceback, sanitize_traceback
 from .managers import ErrorPostPublishedManager
 
 

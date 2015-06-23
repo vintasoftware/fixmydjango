@@ -39,6 +39,15 @@ SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 LOCAL = 'IN_HEROKU' not in os.environ
 
 
+# Admins and Managers
+
+ADMINS = (
+    ('Vinta', 'contact@vinta.com.br'),
+)
+
+MANAGERS = ADMINS
+
+
 # Application definition
 
 INSTALLED_APPS = (
@@ -158,3 +167,43 @@ COMPRESS_PRECOMPILERS = (
 COMPRESS_CSS_FILTERS = (
     'fix_my_django.compressor_filters.CustomCssAbsoluteFilter',
 )
+
+# Logging
+# https://docs.djangoproject.com/en/1.8/topics/logging/
+
+# Logging
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'filters': {
+        'require_debug_true': {
+            '()': 'django.utils.log.RequireDebugTrue'
+        },
+        'require_debug_false': {
+            '()': 'django.utils.log.RequireDebugFalse'
+        }
+    },
+    'handlers': {
+        'console': {
+            'level': 'INFO',
+            'class': 'logging.StreamHandler'
+        },
+        'mail_admins': {
+            'level': 'ERROR',
+            'filters': ['require_debug_false'],
+            'class': 'django.utils.log.AdminEmailHandler'
+        }
+    },
+    'loggers': {
+        '': {
+            'handlers': ['console'],
+            'level': 'INFO'
+        },
+        'django.request': {
+            'handlers': ['mail_admins'],
+            'level': 'ERROR',
+            'propagate': True,
+        }
+    }
+}
