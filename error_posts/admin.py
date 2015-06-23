@@ -15,10 +15,12 @@ class AnswerAdmin(admin.StackedInline):
 
 class ErrorPostAdmin(admin.ModelAdmin):
     inlines = [AnswerAdmin]
-    fields = ['is_published', 'exception_type', 'error_message',
-              'django_version', 'how_to_reproduce',
+    fields = ['is_published', 'exception_type',
+              'raised_by', 'raised_by_line', 'django_version',
+              'error_message', 'how_to_reproduce',
               'traceback', 'sanitized_traceback_html', 'parsed_traceback_html']
-    readonly_fields = ['sanitized_traceback_html', 'parsed_traceback_html']
+    readonly_fields = ['raised_by', 'raised_by_line',
+                       'sanitized_traceback_html', 'parsed_traceback_html']
 
     def sanitized_traceback_html(self, instance):
         return '<br><br><pre>{}</pre>'.format(instance.sanitized_traceback)

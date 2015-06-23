@@ -8,6 +8,15 @@ from core.filters import AllValuesFilterWithEmpty
 from .models import ErrorPost
 
 
+class ExceptionSearchFilter(django_filters.FilterSet):
+    exception_type = django_filters.AllValuesFilter()
+
+    class Meta:
+        model = ErrorPost
+        fields = ['exception_type', 'raised_by', 'raised_by_line',
+                  'django_version']
+
+
 class ErrorPostFilter(django_filters.FilterSet):
     exception_type = AllValuesFilterWithEmpty(empty_label="All types")
     search = django_filters.MethodFilter(action='filter_exception')
