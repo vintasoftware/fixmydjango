@@ -192,10 +192,14 @@ COMPRESS_CSS_FILTERS = (
     'fix_my_django.compressor_filters.CustomCssAbsoluteFilter',
 )
 
-# Logging
-# https://docs.djangoproject.com/en/1.8/topics/logging/
+# Markdown settings
+
+MARKDOWN_EXTENSIONS = ['extra', 'codehilite']
+#MARKDOWN_PROTECT_PREVIEW = True
+
 
 # Logging
+# https://docs.djangoproject.com/en/1.8/topics/logging/
 
 LOGGING = {
     'version': 1,

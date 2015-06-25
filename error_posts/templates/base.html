@@ -1,5 +1,6 @@
 {% load staticfiles %}
 {% load compress %}
+{% load pygments_tags %}
 
 <!DOCTYPE html>
 <html>
@@ -15,6 +16,9 @@
     <link rel="stylesheet" type="text/css" href="{% static 'select2/dist/css/select2.css' %}">
     <link rel="stylesheet" type="text/x-scss" href="{% static 'sass/app.scss' %}">
   {% endcompress %}
+  <style type="text/css">
+    {% pygments_css %}
+  </style>
 
   <meta property="og:image" content="https://www.djangoproject.com/s/img/icon-touch.e4872c4da341.png" />
 
