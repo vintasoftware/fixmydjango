@@ -144,6 +144,22 @@ USE_L10N = True
 
 USE_TZ = True
 
+# Email settings
+
+DEFAULT_FROM_EMAIL = 'contact@vinta.com.br'
+
+if LOCAL:
+    INSTALLED_APPS += ('naomi',)
+    EMAIL_BACKEND = 'naomi.mail.backends.naomi.NaomiBackend'
+    EMAIL_FILE_PATH = base_dir_join('tmp_email')
+else:
+    SERVER_EMAIL = config('SERVER_EMAIL')
+    EMAIL_HOST = config('EMAIL_HOST')
+    EMAIL_PORT = config('EMAIL_PORT')
+    EMAIL_USE_TLS = config('EMAIL_USE_TLS', cast=bool)
+    EMAIL_HOST_USER = config('EMAIL_HOST_USER')
+    EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
+
 # REST
 
 REST_FRAMEWORK = {
