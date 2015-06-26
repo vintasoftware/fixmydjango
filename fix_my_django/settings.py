@@ -118,6 +118,19 @@ DATABASES = {
 if not LOCAL:
     DATABASES['default'] = dj_database_url.config()
 
+# Caches
+if not LOCAL:
+    CACHES = {
+        'default': {
+            'BACKEND': 'django_bmemcached.memcached.BMemcached',
+            'LOCATION': config('MEMCACHEDCLOUD_SERVERS', cast=Csv()),
+            'OPTIONS': {
+                'username': config('MEMCACHEDCLOUD_USERNAME'),
+                'password': config('MEMCACHEDCLOUD_PASSWORD')
+            }
+        }
+    }
+
 # Internationalization
 # https://docs.djangoproject.com/en/1.8/topics/i18n/
 
