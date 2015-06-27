@@ -185,9 +185,6 @@ CORS_URLS_REGEX = r'^/api/.*$'
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
-STATIC_URL = '/static/'
-STATIC_ROOT = base_dir_join('staticfiles')
-
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
     'django.contrib.staticfiles.finders.FileSystemFinder',
@@ -195,6 +192,33 @@ STATICFILES_FINDERS = (
     'djangobower.finders.BowerFinder',
     'compressor.finders.CompressorFinder',
 )
+
+AWS_ACCESS_KEY_ID = config('AWS_ACCESS_KEY_ID', default=None)
+AWS_SECRET_ACCESS_KEY = config('AWS_SECRET_ACCESS_KEY', default=None)
+AWS_STORAGE_BUCKET_NAME = config('AWS_STORAGE_BUCKET_NAME', default=None)
+AWS_S3_SECURE_URLS = False
+AWS_QUERYSTRING_AUTH = False
+AWS_S3_CUSTOM_DOMAIN = '{0}.s3.amazonaws.com'.format(AWS_STORAGE_BUCKET_NAME)
+
+STATICFILES_STORAGE = config('STATICFILES_STORAGE', 'django.contrib.staticfiles.storage.StaticFilesStorage')
+DEFAULT_FILE_STORAGE = config('DEFAULT_FILE_STORAGE', 'django.core.files.storage.FileSystemStorage')
+MEDIA_ROOT = base_dir_join('media')
+STATIC_ROOT = base_dir_join('staticfiles')
+
+if LOCAL:
+    STATIC_URL = '/static/'
+    MEDIA_URL = '/media/'
+else:
+    STATIC_URL = 'http://{0}/static/'.format(AWS_S3_CUSTOM_DOMAIN)
+    MEDIA_URL = 'http://{0}/media/'.format(AWS_S3_CUSTOM_DOMAIN)
+
+
+# collectfast
+
+AWS_PRELOAD_METADATA = True
+COLLECTFAST_CACHE = 'collectfast'
+COLLECTFAST_ENABLED = not LOCAL
+
 
 # Bower
 
