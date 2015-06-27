@@ -25,7 +25,10 @@ libsass==0.8.2
 Markdown==2.6.2
 model-mommy==1.2.4
 psycopg2==2.6
+py==1.4.30
 Pygments==2.0.2
+pytest==2.7.2
+pytest-django==2.8.0
 python-binary-memcached==0.24.3
 python-decouple==2.3
 requests==2.7.0
