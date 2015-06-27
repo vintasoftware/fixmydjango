@@ -235,14 +235,15 @@ BOWER_INSTALLED_APPS = (
 # Compressor
 
 COMPRESS_ENABLED = True
+COMPRESS_STORAGE = STATICFILES_STORAGE
 COMPRESS_URL = STATIC_URL
 
 COMPRESS_PRECOMPILERS = (
-    ('text/x-scss', 'fix_my_django.compressor_filters.PatchedSCSSCompiler'),
+    ('text/x-scss', 'core.compressor_filters.PatchedSCSSCompiler'),
 )
 
 COMPRESS_CSS_FILTERS = (
-    'fix_my_django.compressor_filters.CustomCssAbsoluteFilter',
+    'core.compressor_filters.CustomCssAbsoluteFilter',
 )
 
 # Markdown settings
