@@ -5,12 +5,12 @@ from django.views.generic import DetailView
 from django_filters.views import FilterView
 
 from .models import ErrorPost
-from .filtersets import ErrorPostFilter
+from .filtersets import ExceptionSearchFilter
 
 
 class ErrorPostListView(FilterView):
     template_name = 'error_posts/list.html'
-    filterset_class = ErrorPostFilter
+    filterset_class = ExceptionSearchFilter
 
     def get_queryset(self):
         return ErrorPost.publisheds.all()
