@@ -31,7 +31,25 @@
         <label for="exception_type">Message:</label>
         {% render_field filter.form.search class+='text form-control' placeholder="ex: value too long" %}
       </div>
+      <div class="collapse more-filters
+                  {% if filter.form.raised_by.value or filter.form.raised_by_line.value or filter.form.django_version.value %}
+                  in
+                  {% endif %}" id="collapse-more-filters">
+        <div class="form-group">
+          <label for="exception_type">Raised by:</label>
+          {% render_field filter.form.raised_by class+='form-control' %}
+        </div>
+        <div class="form-group">
+          <label for="exception_type">Raised by line:</label>
+          {% render_field filter.form.raised_by_line class+='form-control' %}
+        </div>
+        <div class="form-group">
+          <label for="exception_type">Django version:</label>
+          {% render_field filter.form.django_version class+='form-control' %}
+        </div>
+      </div>
       <button class="btn btn-primary" type="submit" >Fix it!</button>
+      <a class="pull-right collapse-more-filters-toggle" href="#collapse-more-filters" data-toggle="collapse">Show/Hide all filters</a>
     </form>
   </div>
 </div>
@@ -43,6 +61,10 @@
           <h4 class="list-group-item-heading text-danger">{{ error_post.exception_type }} <span class="small">{{ error_post.error_message }}</span></h4>
           <p class="list-group-item-text">Raised by: {{ error_post.raised_by }} (line {{ error_post.raised_by_line }})</p>
         </a>
+      {% empty %}
+        <div class="list-group-item empty-result">
+          <p class="text-center">No results found. Try less specific filters or <a href="{% url 'error_posts:list' %}">see all exceptions</a></p>
+        </div>
       {% endfor %}
     </ul>
   </div>
