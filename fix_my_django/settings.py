@@ -252,6 +252,10 @@ MARKDOWN_EXTENSIONS = ['extra', 'codehilite']
 #MARKDOWN_PROTECT_PREVIEW = True
 
 
+# fix-my-django-lib settings
+
+FIX_MY_DJANGO_ADMIN_MODE = True
+
 # Logging
 # https://docs.djangoproject.com/en/1.8/topics/logging/
 
