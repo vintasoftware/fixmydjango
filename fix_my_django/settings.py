@@ -249,7 +249,7 @@ COMPRESS_CSS_FILTERS = (
 # Markdown settings
 
 MARKDOWN_EXTENSIONS = ['extra', 'codehilite']
-#MARKDOWN_PROTECT_PREVIEW = True
+MARKDOWN_PROTECT_PREVIEW = True
 
 
 # fix-my-django-lib settings
