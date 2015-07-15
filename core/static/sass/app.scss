@@ -70,6 +70,14 @@ $form-control-default-box-shadow: inset 0 2px 0 rgba(0, 0, 0, .075);
   }
 }
 
+.row{
+  .col-md-12 {
+    .lead{ 
+      margin: 10px 0 40px 0;
+    }    
+  }
+}
+
 .error-post-list-row {
   margin-top: 10px;
 
