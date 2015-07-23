@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="row">
+  <div class="col-md-12">
+    <p class="lead text-center"><b>Error 404:</b> the page you requested was not found. You'll be redirected to <a href="{% url 'error_posts:list' %}">index page</a>.</p>
+  </div>
+</div>
+
+<script>
+setTimeout(function () {
+  window.location.href = "/";
+}, 2500);
+</script>
+{% endblock content %}
