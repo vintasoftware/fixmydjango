@@ -74,6 +74,7 @@ INSTALLED_APPS = (
 )
 
 MIDDLEWARE_CLASSES = (
+    'log_request_id.middleware.RequestIDMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -275,12 +276,22 @@ LOGGING = {
         },
         'require_debug_false': {
             '()': 'django.utils.log.RequireDebugFalse'
+        },
+        'request_id': {
+            '()': 'log_request_id.filters.RequestIDFilter'
         }
+    },
+    'formatters': {
+        'standard': {
+            'format': '%(levelname)-8s [%(asctime)s] [%(request_id)s] %(name)s: %(message)s'
+        },
     },
     'handlers': {
         'console': {
             'level': 'INFO',
-            'class': 'logging.StreamHandler'
+            'class': 'logging.StreamHandler',
+            'filters': ['request_id'],
+            'formatter': 'standard',
         },
         'mail_admins': {
             'level': 'ERROR',
@@ -297,6 +308,14 @@ LOGGING = {
             'handlers': ['mail_admins'],
             'level': 'ERROR',
             'propagate': True,
-        }
+        },
+        'log_request_id.middleware': {
+            'handlers': ['console'],
+            'level': 'INFO',
+            'propagate': False,
+        },
     }
 }
+
+LOG_REQUEST_ID_HEADER = "HTTP_X_REQUEST_ID"
+LOG_REQUESTS = not DEBUG
