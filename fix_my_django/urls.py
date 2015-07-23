@@ -6,7 +6,6 @@ from django.contrib.sitemaps.views import sitemap
 
 from django.views.generic import TemplateView
 
-from core.views import ErrorView404
 from error_posts.sitemaps import ErrorPostSitemap
 
 
@@ -25,4 +24,4 @@ urlpatterns = patterns('',
         template_name='robots.txt'), name='robots-txt')
 )
 
-handler404 = ErrorView404.as_view()
+handler404 = 'core.views.handler404'

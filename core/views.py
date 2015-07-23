@@ -1,5 +1,9 @@
-from django.views import generic
+from django.shortcuts import render_to_response
+from django.template import RequestContext
 
 
-class ErrorView404(generic.TemplateView):
-    template_name = '404.html'
+def handler404(request):
+    response = render_to_response('404.html', {},
+                                  context_instance=RequestContext(request))
+    response.status_code = 404
+    return response
