@@ -304,6 +304,11 @@ LOGGING = {
             'handlers': ['console'],
             'level': 'INFO'
         },
+        'bmemcached.protocol': {
+            'handlers': ['console'],
+            'level': 'WARNING',
+            'propagate': False
+        },
         'django.request': {
             'handlers': ['mail_admins'],
             'level': 'ERROR',
