@@ -3,12 +3,6 @@
 {% load staticfiles %}
 {% load widget_tweaks %}
 
-{% block metatags %}
-  {% for name, content in metatags.items %}
-    <meta name="{{ name }}" content="{{ content }}" />
-  {% endfor %}
-{% endblock metatags %}
-
 {% block js %}
   <script type="text/javascript" src="{% static 'error_posts/js/widgets.js' %}"></script>
 {% endblock %}

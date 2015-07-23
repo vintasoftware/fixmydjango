@@ -11,6 +11,7 @@ django-cors-headers==1.1.0
 django-filter==0.9.2
 django-libsass==0.3
 django-markdown==0.8.4
+django-meta==0.3.1
 django-model-utils==2.2
 django-naomi==0.7
 django-storages-redux==1.2.3

@@ -66,6 +66,7 @@ INSTALLED_APPS = (
     'django_filters',
     'widget_tweaks',
     'django_markdown',
+    'meta',
 
     # Apps
     'core',
@@ -251,6 +252,12 @@ COMPRESS_CSS_FILTERS = (
 MARKDOWN_EXTENSIONS = ['extra', 'codehilite']
 MARKDOWN_PROTECT_PREVIEW = True
 
+# Meta tags settings
+# https://github.com/nephila/django-meta#configuration
+
+META_USE_OG_PROPERTIES = True
+META_USE_TWITTER_PROPERTIES = True
+META_USE_GOOGLEPLUS_PROPERTIES = True
 
 # fix-my-django-lib settings
 
