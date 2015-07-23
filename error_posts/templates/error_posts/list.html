@@ -51,7 +51,7 @@
   <div class="col-md-12">
     <ul class="list-group" itemscope itemtype="http://schema.org/ItemList">
       {% for error_post in errorpost_list %}
-        <a href="{% url 'error_posts:detail' error_post.pk %}" class="list-group-item">
+        <a href="{% url 'error_posts:detail' error_post.slug %}" class="list-group-item">
           <h4 class="list-group-item-heading text-danger">{{ error_post.exception_type }} <span class="small">{{ error_post.error_message }}</span></h4>
           <p class="list-group-item-text">Raised by: {{ error_post.raised_by }} (line {{ error_post.raised_by_line }})</p>
         </a>

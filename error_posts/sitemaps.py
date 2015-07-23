@@ -14,7 +14,7 @@ class ErrorPostSitemap(Sitemap):
         return ErrorPost.publisheds.all()
 
     def location(self, item):
-        return reverse('error_posts:detail', args=(item.id,))
+        return reverse('error_posts:detail', kwargs={'slug': item.slug})
 
     def lastmod(self, item):
         try:

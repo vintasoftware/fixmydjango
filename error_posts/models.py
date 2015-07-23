@@ -7,10 +7,18 @@ from model_utils.models import TimeStampedModel
 from django_markdown.models import MarkdownField
 from jsonfield import JSONField
 from boltons.tbutils import ParsedException
+from autoslug import AutoSlugField
+from autoslug.settings import slugify
 
 from fixmydjango.sanitize_tb import clean_traceback, sanitize_traceback
 from .choices import DJANGO_VERSIONS
 from .managers import ErrorPostPublishedManager
+
+
+def _generate_slug(error_post):
+    return '{}-{}'.format(
+        slugify(error_post.raised_by[7:-3].replace('/', '-')),
+        slugify(error_post.exception_type))
 
 
 class ErrorPost(TimeStampedModel):
@@ -24,13 +32,14 @@ class ErrorPost(TimeStampedModel):
     django_version = models.CharField(choices=DJANGO_VERSIONS, max_length=5)
     how_to_reproduce = MarkdownField(blank=True)
     is_published = models.BooleanField(default=False)
+    slug = AutoSlugField(populate_from=_generate_slug)
 
     objects = models.Manager()
     publisheds = ErrorPostPublishedManager()
 
     def __unicode__(self):
-        return u'{} - Version: {} - Exception type: {}'.format(
-            self.pk, DJANGO_VERSIONS[self.django_version], self.exception_type
+        return u'{} - {} - {}'.format(
+            self.pk, self.raised_by, self.exception_type
         )
 
     def clean(self):

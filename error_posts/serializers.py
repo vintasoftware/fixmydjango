@@ -29,7 +29,7 @@ class ErrorPostSearchSerializer(serializers.ListSerializer):
 class ErrorPostSerializer(serializers.ModelSerializer):
     url = serializers.HyperlinkedIdentityField(
         view_name='error_posts:detail',
-        lookup_field='pk')
+        lookup_field='slug')
 
     class Meta:
         model = ErrorPost
