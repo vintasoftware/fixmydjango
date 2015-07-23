@@ -7,15 +7,17 @@ from .models import Answer, ErrorPost
 
 
 class ErrorPostSitemap(Sitemap):
-    changfreq = 'always'
+    changfreq = 'daily'
+    priority = 0.5
 
     def items(self):
-        return ErrorPost.objects.all()
+        return ErrorPost.publisheds.all()
 
     def location(self, item):
         return reverse('error_posts:detail', args=(item.id,))
 
     def lastmod(self, item):
-        last_answer = Answer.objects.filter(error=item)
-        if last_answer:
-            return sorted(last_answer)[-1].date
+        try:
+            return item.answers.latest('modified').modified
+        except Answer.DoesNotExist:
+            return item.modified
