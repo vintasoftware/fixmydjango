@@ -18,9 +18,11 @@ class ErrorPostAdmin(admin.ModelAdmin):
     fields = ['is_published', 'exception_type',
               'raised_by', 'raised_by_line', 'django_version',
               'error_message', 'how_to_reproduce',
-              'traceback', 'sanitized_traceback_html', 'parsed_traceback_html']
+              'traceback', 'sanitized_traceback_html', 'parsed_traceback_html',
+              'slug']
     readonly_fields = ['raised_by', 'raised_by_line',
-                       'sanitized_traceback_html', 'parsed_traceback_html']
+                       'sanitized_traceback_html', 'parsed_traceback_html',
+                       'slug']
 
     def sanitized_traceback_html(self, instance):
         return '<br><br><pre>{}</pre>'.format(instance.sanitized_traceback)

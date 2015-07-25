@@ -32,7 +32,7 @@ class ErrorPost(TimeStampedModel):
     django_version = models.CharField(choices=DJANGO_VERSIONS, max_length=5)
     how_to_reproduce = MarkdownField(blank=True)
     is_published = models.BooleanField(default=False)
-    slug = AutoSlugField(populate_from=_generate_slug)
+    slug = AutoSlugField(populate_from=_generate_slug, unique=True)
 
     objects = models.Manager()
     publisheds = ErrorPostPublishedManager()
