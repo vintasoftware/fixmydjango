@@ -14,6 +14,10 @@ class AnswerAdmin(admin.StackedInline):
 
 
 class ErrorPostAdmin(admin.ModelAdmin):
+    list_display = ['exception_type', 'raised_by', 'django_version', 'slug', 'is_published']
+    list_filter = ['is_published', 'django_version', 'exception_type']
+    search_fields = ['traceback']
+
     inlines = [AnswerAdmin]
     fields = ['is_published', 'exception_type',
               'raised_by', 'raised_by_line', 'django_version',
