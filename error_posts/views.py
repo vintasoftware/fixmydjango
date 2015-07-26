@@ -2,16 +2,16 @@
 
 from django.views.generic import DetailView
 
-from django_filters.views import FilterView
-
+from core.generic_views import FilterViewWithPagination
 from .mixins import ErrorPostListMetadataMixin, ErrorPostMetadataMixin
 from .filtersets import ExceptionSearchFilter
 from .models import ErrorPost
 
 
-class ErrorPostListView(ErrorPostListMetadataMixin, FilterView):
+class ErrorPostListView(ErrorPostListMetadataMixin, FilterViewWithPagination):
     template_name = 'error_posts/list.html'
     filterset_class = ExceptionSearchFilter
+    paginate_by = 50
 
     def get_queryset(self):
         return ErrorPost.publisheds.all()

@@ -67,6 +67,7 @@ INSTALLED_APPS = (
     'widget_tweaks',
     'django_markdown',
     'meta',
+    'bootstrap_pagination',
 
     # Apps
     'core',

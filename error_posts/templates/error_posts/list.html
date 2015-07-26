@@ -2,6 +2,7 @@
 
 {% load staticfiles %}
 {% load widget_tweaks %}
+{% load bootstrap_pagination %}
 
 {% block js %}
   <script type="text/javascript" src="{% static 'error_posts/js/widgets.js' %}"></script>
@@ -61,6 +62,7 @@
         </div>
       {% endfor %}
     </ul>
+    {% bootstrap_paginate page_obj range=10 show_prev_next="false" show_first_last="true" %}
   </div>
 </div>
 
