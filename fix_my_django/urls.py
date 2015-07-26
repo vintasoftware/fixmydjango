@@ -6,7 +6,8 @@ from django.contrib.sitemaps.views import sitemap
 
 from django.views.generic import TemplateView
 
-from error_posts.sitemaps import ErrorPostSitemap
+from error_posts.sitemaps import (
+    IndexSitemap, ErrorPostSitemap)
 
 
 urlpatterns = patterns('',
@@ -16,7 +17,11 @@ urlpatterns = patterns('',
     url(r'^', include('error_posts.urls', namespace='error_posts')),
 
     # SEO
-    url(r'^sitemap\.xml$', sitemap, {'sitemaps': {'error': ErrorPostSitemap}},
+    url(r'^sitemap\.xml$', sitemap,
+        {'sitemaps': {
+            'index': IndexSitemap,
+            'error_posts': ErrorPostSitemap
+        }},
         name='django.contrib.sitemaps.views.sitemap'),
     url(r'^google44a604e6db8d2224\.html$', TemplateView.as_view(
         template_name='gwm-verify.html'), name='gwm-verify'),
