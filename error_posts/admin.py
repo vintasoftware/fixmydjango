@@ -1,6 +1,7 @@
 import json
 
 from django.contrib import admin
+from django.utils.translation import ugettext as _
 
 from django_markdown.admin import MarkdownField, AdminMarkdownWidget, MarkdownModelAdmin
 
@@ -13,9 +14,33 @@ class AnswerAdmin(admin.StackedInline):
     formfield_overrides = {MarkdownField: {'widget': AdminMarkdownWidget}}
 
 
+def _has_answer(error_post):
+    return error_post.answers.exists()
+
+
+class HasAnswerListFilter(admin.SimpleListFilter):
+    title = _('has answer')
+    parameter_name = 'has_answer'
+
+    def lookups(self, request, model_admin):
+        return (
+            ('yes', _('Yes')),
+            ('no',  _('No')),
+        )
+
+    def queryset(self, request, queryset):
+        if self.value() == 'yes':
+            # distinct necessary here, see: http://stackoverflow.com/a/14832060/145349
+            return queryset.filter(answers__isnull=False).distinct()
+        if self.value() == 'no':
+            return queryset.filter(answers__isnull=True)
+
+
 class ErrorPostAdmin(admin.ModelAdmin):
-    list_display = ['exception_type', 'raised_by', 'django_version', 'slug', 'is_published']
-    list_filter = ['is_published', 'django_version', 'exception_type']
+    list_display = ['exception_type', 'raised_by', 'django_version', 'slug',
+                    _has_answer, 'is_published']
+    list_filter = ['is_published', HasAnswerListFilter, 'django_version',
+                   'exception_type']
     search_fields = ['traceback']
 
     inlines = [AnswerAdmin]
