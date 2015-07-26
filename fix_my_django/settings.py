@@ -172,6 +172,14 @@ REST_FRAMEWORK = {
     'DEFAULT_FILTER_BACKENDS': (
         'rest_framework.filters.DjangoFilterBackend',
     ),
+    'DEFAULT_THROTTLE_CLASSES': (
+        'rest_framework.throttling.AnonRateThrottle',
+        'rest_framework.throttling.UserRateThrottle'
+    ),
+    'DEFAULT_THROTTLE_RATES': {
+        'anon': '3/second',
+        'user': '3/second'
+    }
 }
 
 if DEBUG:
