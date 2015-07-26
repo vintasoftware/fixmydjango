@@ -225,10 +225,19 @@ else:
 
 
 # collectfast
-
 AWS_PRELOAD_METADATA = True
-COLLECTFAST_CACHE = 'collectfast'
+
 COLLECTFAST_ENABLED = not LOCAL
+if COLLECTFAST_ENABLED:
+    CACHES['collectfast'] = {
+        'BACKEND': 'django.core.cache.backends.db.DatabaseCache',
+        'LOCATION': 'django_db_cache_collectfast',
+        'TIMEOUT': 60 * 60 * 24 * 7,  # 1 week
+        'OPTIONS': {
+            'MAX_ENTRIES': 10000
+        }
+    }
+    COLLECTFAST_CACHE = 'collectfast'
 
 
 # Bower
