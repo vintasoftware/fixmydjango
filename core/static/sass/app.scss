@@ -1,4 +1,4 @@
-$icon-font-path: "../bootstrap-sass-official/assets/fonts/bootstrap/";
+$icon-font-path: "../bootstrap-sass/assets/fonts/bootstrap/";
 
 $django-light-green: #C9F0DD;
 $django-green: #44B78B;
@@ -19,7 +19,7 @@ $navbar-default-toggle-hover-bg: transparent;
 $navbar-default-toggle-icon-bar-bg: white;
 
 @import "sass/bootswatch-lumen/_variables.scss";
-@import "bootstrap-sass-official/assets/stylesheets/bootstrap.scss";
+@import "bootstrap-sass/assets/stylesheets/bootstrap.scss";
 @import "sass/bootswatch-lumen/_bootswatch.scss";
 @import "select2-bootstrap-theme/src/select2-bootstrap.scss";
 
