@@ -1,7 +1,7 @@
 # coding: utf-8
 
 from django.views.generic import CreateView
-from django.core.urlresolvers import reverse_lazy, reverse
+from django.core.urlresolvers import reverse
 
 from .forms import DraftForm
 
