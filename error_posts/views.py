@@ -16,6 +16,11 @@ class ErrorPostListView(ErrorPostListMetadataMixin, FilterViewWithPagination):
     def get_queryset(self):
         return ErrorPost.publisheds.all()
 
+    def get_context_data(self, **kwargs):
+        context = super(ErrorPostListView, self).get_context_data(**kwargs)
+        context['error_added'] = self.request.GET.get('error_added')
+        return context
+
 
 class ErrorPostDetailView(ErrorPostMetadataMixin, DetailView):
     template_name = 'error_posts/detail.html'

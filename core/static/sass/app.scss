@@ -46,6 +46,18 @@ $form-control-default-box-shadow: inset 0 2px 0 rgba(0, 0, 0, .075);
   }
 }
 
+.error-added-alert  {
+  background-color: $django-light-green;
+  border-color: $django-light-green;
+  color: $django-green;
+
+  button {
+    &:hover {
+        color: $django-green;
+    }
+  }
+}
+
 .content-container {
   margin-top: $navbar-height + 20px;
 }
@@ -68,6 +80,10 @@ $form-control-default-box-shadow: inset 0 2px 0 rgba(0, 0, 0, .075);
   .form-group:not(:first-child) {
     margin-left: 10px;
   }
+}
+
+.insert-error-btn {
+  padding: 1em;
 }
 
 .error-post-list-row {
@@ -93,6 +109,18 @@ $form-control-default-box-shadow: inset 0 2px 0 rgba(0, 0, 0, .075);
       display: inline;
       color: inherit;
     }
+  }
+}
+
+.panel-create {
+  background-color: #44B78B !important;
+  color: #FFF !important;
+}
+
+.create-draft-form {
+
+  .inline-email-field {
+    padding-top: 4em;
   }
 }
 

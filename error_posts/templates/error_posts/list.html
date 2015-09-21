@@ -13,8 +13,19 @@
 
 {% block content %}
 <div class="row">
+  {% if error_added %}
+    <div class="col-md-12">
+      <div class="alert alert-success alert-dismissible error-added-alert" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <strong>Thank you</strong> for adding a new exception! Soon its solution will be available.
+      </div>
+    </div>
+  {% endif %}
   <div class="col-md-12">
     <p class="lead"><b>Fix my Django</b> shows common Django exceptions and how to fix them. <br>Use the filters below to find the error you're having.</p>
+  </div>
+  <div class="col-md-12 insert-error-btn">
+    <a href="{% url 'drafts:create' %}"><button class="btn btn-success pull-right">Insert your Exception</button></a>
   </div>
   <div class="col-md-12">
     <form action="" method="get" class="list-filter-form form-inline">

@@ -15,6 +15,7 @@ urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
 
     url(r'^', include('error_posts.urls', namespace='error_posts')),
+    url(r'^draft/', include('drafts.urls', namespace='drafts')),
 
     # SEO
     url(r'^sitemap\.xml$', sitemap,
