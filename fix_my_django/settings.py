@@ -72,6 +72,7 @@ INSTALLED_APPS = (
     # Apps
     'core',
     'error_posts',
+    'drafts',
 )
 
 MIDDLEWARE_CLASSES = (
