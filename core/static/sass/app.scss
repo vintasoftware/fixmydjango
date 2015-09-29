@@ -113,8 +113,8 @@ $form-control-default-box-shadow: inset 0 2px 0 rgba(0, 0, 0, .075);
 }
 
 .panel-create {
-  background-color: #44B78B !important;
-  color: #FFF !important;
+  color: #FFF;
+  background-color: $django-green;
 }
 
 .create-draft-form {
