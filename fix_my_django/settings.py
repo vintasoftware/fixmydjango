@@ -343,3 +343,6 @@ LOGGING = {
 
 LOG_REQUEST_ID_HEADER = "HTTP_X_REQUEST_ID"
 LOG_REQUESTS = not DEBUG
+
+# Messages
+MESSAGE_STORAGE = 'django.contrib.messages.storage.cookie.CookieStorage'
