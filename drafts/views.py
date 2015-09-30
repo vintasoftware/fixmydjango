@@ -13,8 +13,8 @@ class DraftCreateView(CreateView):
     template_name = 'drafts/create.html'
 
     def form_valid(self, form):
-        messages.info(self.request, """Thank you for adding a new exception!
-                      Soon its solution will be available.""")
+        messages.info(self.request, "Thank you for adding a new exception! "
+                      "Soon its solution will be available.")
         return super(DraftCreateView, self).form_valid(form)
 
     def get_success_url(self):
