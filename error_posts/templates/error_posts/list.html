@@ -70,7 +70,7 @@
         </a>
       {% empty %}
         <div class="list-group-item empty-result">
-          <p class="text-center">No results found. <a href="{% url 'drafts:create' %}">Insert</a> your exception or <a href="{% url 'error_posts:list' %}">see all exceptions</a></p>
+          <p class="text-center">No results found. <a href="{% url 'drafts:create' %}">Insert</a> your exception, so we can find a solution for it or <a href="{% url 'error_posts:list' %}">see all exceptions</a>.</p>
         </div>
       {% endfor %}
     </ul>
