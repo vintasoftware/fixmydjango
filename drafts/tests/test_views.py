@@ -13,7 +13,7 @@ def test_returns_200(client):
     assert response.status_code == 200
 
 
-@pytest.mark.usefixtures('client', 'transactional_db')
+@pytest.mark.django_db()
 def test_post_creates_a_draft(client):
     params = {
         'author': 'not-a-real-name',
