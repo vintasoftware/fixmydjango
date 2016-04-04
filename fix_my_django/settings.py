@@ -153,7 +153,7 @@ USE_TZ = True
 DEFAULT_FROM_EMAIL = 'contact@vinta.com.br'
 
 if LOCAL:
-    INSTALLED_APPS += ('naomi',)
+    INSTALLED_APPS += ('naomi', 'fixmydjango')
     EMAIL_BACKEND = 'naomi.mail.backends.naomi.NaomiBackend'
     EMAIL_FILE_PATH = base_dir_join('tmp_email')
 else:
