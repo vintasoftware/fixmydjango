@@ -10,3 +10,4 @@
 /staticfiles/
 /media/
 /tmp_email/
+.python-version
