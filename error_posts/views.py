@@ -1,6 +1,6 @@
 # coding: utf-8
 
-from django.views.generic import DetailView
+from django.views import generic
 
 from core.generic_views import FilterViewWithPagination
 from .mixins import ErrorPostListMetadataMixin, ErrorPostMetadataMixin
@@ -17,7 +17,7 @@ class ErrorPostListView(ErrorPostListMetadataMixin, FilterViewWithPagination):
         return ErrorPost.publisheds.all()
 
 
-class ErrorPostDetailView(ErrorPostMetadataMixin, DetailView):
+class ErrorPostDetailView(ErrorPostMetadataMixin, generic.DetailView):
     template_name = 'error_posts/detail.html'
 
     def get_queryset(self):

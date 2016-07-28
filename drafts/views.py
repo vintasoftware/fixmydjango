@@ -12,6 +12,12 @@ class DraftCreateView(CreateView):
     form_class = DraftForm
     template_name = 'drafts/create.html'
 
+    def get_initial(self):
+        initial = {}
+        for key, values in self.request.GET.items():
+            initial[key] = values
+        return initial
+
     def form_valid(self, form):
         messages.info(self.request, "Thank you for adding a new exception! "
                       "Soon its solution will be available.")
