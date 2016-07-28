@@ -20,4 +20,4 @@ class DraftForm(forms.ModelForm):
         if initial:
             for field in initial:
                 if field in self.fields:
-                    self.fields[field].widget.attrs['disabled'] = True
+                    self.fields[field].widget.attrs['readonly'] = True

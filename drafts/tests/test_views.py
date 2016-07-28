@@ -1,27 +1,15 @@
-# coding: utf-8
-
-import pytest
-
+from django.test import TestCase
 from django.core.urlresolvers import reverse
 
-from drafts.models import Draft
 
 
-@pytest.mark.usefixtures('client')
-def test_returns_200(client):
-    response = client.get(reverse('drafts:create'))
-    assert response.status_code == 200
+class TestDraftCreateView(TestCase):
+    view_name = 'drafts:create'
 
+    def setUp(self):
+        self.view_url = reverse(self.view_name)
 
-@pytest.mark.django_db()
-def test_post_creates_a_draft(client):
-    params = {
-        'author': 'not-a-real-name',
-        'email': 'not-a-real@email.com',
-        'exception_type': 'test-exception',
-        'error_message': 'test-error-message',
-        'traceback': 'test-traceback',
-        'how_to_reproduce': 'how_to_repr_test',
-    }
-    client.post(reverse('drafts:create'), data=params)
-    assert Draft.objects.all().count() == 1
+    def test_get_returns_200(self):
+        response = self.client.get(self.view_url)
+
+        self.assertEqual(response.status_code, 200)
