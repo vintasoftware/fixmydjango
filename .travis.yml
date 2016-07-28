@@ -1,12 +1,12 @@
 language: python
 python:
-  - "2.7"
+  - "3.5.1"
 before_install:  # http://docs.travis-ci.com/user/gui-and-headless-browsers/
   - "export DISPLAY=:99.0"
   - "sh -e /etc/init.d/xvfb start"
 install:
   - npm install -g bower
-  - pip install -r requirements/dev.txt
+  - pip install -r requirements.txt
 script:
   - python manage.py bower install
   - py.test
