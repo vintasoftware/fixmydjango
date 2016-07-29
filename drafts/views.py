@@ -1,9 +1,9 @@
-# coding: utf-8
-
 from django.contrib import messages
-
 from django.views.generic import CreateView
-from django.core.urlresolvers import reverse_lazy
+from django.core.urlresolvers import reverse
+from django.conf import settings
+
+from templated_email import send_templated_mail
 
 from .forms import DraftForm
 
@@ -19,9 +19,22 @@ class DraftCreateView(CreateView):
         return initial
 
     def form_valid(self, form):
-        messages.info(self.request, "Thank you for adding a new exception! "
+        reponse = super().form_valid(form)
+
+        messages.info(self.request,
+                      "Thank you for adding a new exception! "
                       "Soon its solution will be available.")
-        return super(DraftCreateView, self).form_valid(form)
+        draft_url = self.request.build_absolute_uri(
+            reverse('admin:drafts_draft_change', args=[self.object.id]))
+        send_templated_mail(
+            template_name='new_draft',
+            from_email=settings.DEFAULT_FROM_EMAIL,
+            recipient_list=['contact@vinta.com.br'],
+            context={
+                'draft': self.object,
+                'draft_url': draft_url})
+
+        return reponse
 
     def get_success_url(self):
-        return reverse_lazy('error_posts:list')
+        return reverse('error_posts:list')
