@@ -19,7 +19,7 @@ class DraftCreateView(CreateView):
         return initial
 
     def form_valid(self, form):
-        reponse = super().form_valid(form)
+        response = super().form_valid(form)
 
         messages.info(self.request,
                       "Thank you for adding a new exception! "
@@ -34,7 +34,7 @@ class DraftCreateView(CreateView):
                 'draft': self.object,
                 'draft_url': draft_url})
 
-        return reponse
+        return response
 
     def get_success_url(self):
         return reverse('error_posts:list')
