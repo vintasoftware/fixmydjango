@@ -1,6 +1,6 @@
-from django.test import TestCase
 from django.core.urlresolvers import reverse
 
+from test_plus.test import TestCase
 
 
 class TestDraftCreateView(TestCase):
@@ -9,7 +9,18 @@ class TestDraftCreateView(TestCase):
     def setUp(self):
         self.view_url = reverse(self.view_name)
 
-    def test_get_returns_200(self):
-        response = self.client.get(self.view_url)
+        self.params = {
+            'author': 'The Name',
+            'email': 'some@email.com',
+            'exception_type': 'SomeException',
+            'error_message': 'The message',
+            'traceback': 'thetraceback',
+            'django_version': '1.9'
+        }
 
-        self.assertEqual(response.status_code, 200)
+    def test_get_returns_200(self):
+        self.assertGoodView(self.view_name)
+
+    def test_creates_draft(self):
+        response = self.post(self.view_name, data=self.params)
+        self.response_302()
