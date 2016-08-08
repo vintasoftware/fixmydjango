@@ -11,3 +11,4 @@
 /media/
 /tmp_email/
 .python-version
+.cache/*

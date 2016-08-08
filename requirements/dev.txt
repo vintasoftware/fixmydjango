@@ -1,7 +1,0 @@
--r common.txt
-
-model-mommy==1.2.4
-py==1.4.30
-pytest==2.7.2
-pytest-django==2.8.0
-selenium==2.46.0

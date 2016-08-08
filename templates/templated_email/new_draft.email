@@ -1,0 +1,4 @@
+{% block subject %}New draft submited{% endblock %}
+{% block plain %}
+  {{ draft_url }}
+{% endblock %}

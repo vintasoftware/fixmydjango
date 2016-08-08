@@ -1,10 +1,29 @@
-import pytest
+from django.test import TestCase
 from django.core.urlresolvers import reverse
 
 
-@pytest.mark.usefixtures('example_data', 'client')
-def test_returns_200_and_has_errorpost_list(client):
-    response = client.get(reverse('error_posts:list'))
-    assert response.status_code == 200
-    assert 'errorpost_list' in response.context
-    assert len(response.context['errorpost_list']) > 0
+
+class TestErrorPostListView(TestCase):
+    view_name = 'error_posts:list'
+
+    def setUp(self):
+        self.view_url = reverse(self.view_name)
+
+    def test_get_returns_200(self):
+        response = self.client.get(self.view_url)
+
+        self.assertEqual(response.status_code, 200)
+
+
+
+class TestErrorPostDetailView(TestCase):
+    fixtures = ['example_data.json']
+    view_name = 'error_posts:detail'
+
+    def setUp(self):
+        self.view_url = reverse(self.view_name, kwargs={'slug': 'core-mail-message-valueerror'})
+
+    def test_get_returns_200(self):
+        response = self.client.get(self.view_url)
+
+        self.assertEqual(response.status_code, 200)
