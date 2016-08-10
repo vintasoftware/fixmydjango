@@ -278,6 +278,7 @@ MARKDOWN_PROTECT_PREVIEW = True
 META_USE_OG_PROPERTIES = True
 META_USE_TWITTER_PROPERTIES = True
 META_USE_GOOGLEPLUS_PROPERTIES = True
+META_SITE_DOMAIN = 'http://www.fixmydjango.com'
 
 # fix-my-django-lib settings
 
