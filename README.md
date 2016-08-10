@@ -18,12 +18,12 @@ We temporarily deployed compatible versions as `-vinta`, we should come back to 
 
 ### django-bootstrap-pagination
 
-Thread: https://github.com/jmcclell/django-bootstrap-pagination/pull/53
-Vinta's fork: https://github.com/vintasoftware/django-bootstrap-pagination
-PyPI name: django-bootstrap-pagination-vinta
+Thread: https://github.com/jmcclell/django-bootstrap-pagination/pull/53   
+Vinta's fork: https://github.com/vintasoftware/django-bootstrap-pagination   
+PyPI name: django-bootstrap-pagination-vinta   
 
 ### django-markdown
 
-Thread: https://github.com/klen/django_markdown/pull/70
-Vinta's fork: https://github.com/vintasoftware/django_markdown
-PyPI name: django-markdown-vinta
+Thread: https://github.com/klen/django_markdown/pull/70   
+Vinta's fork: https://github.com/vintasoftware/django_markdown   
+PyPI name: django-markdown-vinta   
