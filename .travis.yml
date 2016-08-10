@@ -11,4 +11,4 @@ script:
   - python manage.py bower install
   - python manage.py test
 env:
-  - DJANGO_SETTINGS_MODULE="fix_my_django.settings.local"
+  - DJANGO_SETTINGS_MODULE="fix_my_django.settings.test"
