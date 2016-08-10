@@ -10,3 +10,20 @@ Feel free to fork this project and contribute with it! Take a look at the [issue
 
 ## Authors
 Made by pythonistas at [Vinta Software Studio: vinta.com.br](http://www.vinta.com.br/?fixmydjango).
+
+## Development notes
+
+2 dependencies of this project are not yet compatible with django 1.10. There are PR's made that fix this but project mainteiners did not yet merge stuff.
+We temporarelly deployed compatible versions as `-vinta`, we should come back to the main projects as soon as they get back on track.
+
+### django-bootstrap-pagination
+
+Thread: https://github.com/jmcclell/django-bootstrap-pagination/pull/53
+Vinta's fork: https://github.com/vintasoftware/django-bootstrap-pagination
+PyPI name: django-bootstrap-pagination-vinta
+
+### django-markdown
+
+Thread: https://github.com/klen/django_markdown/pull/70
+Vinta's fork: https://github.com/vintasoftware/django_markdown
+PyPI name: django-markdown-vinta
