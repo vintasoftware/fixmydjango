@@ -13,8 +13,8 @@ Made by pythonistas at [Vinta Software Studio: vinta.com.br](http://www.vinta.co
 
 ## Development notes
 
-2 dependencies of this project are not yet compatible with django 1.10. There are PR's made that fix this but project mainteiners did not yet merge stuff.
-We temporarelly deployed compatible versions as `-vinta`, we should come back to the main projects as soon as they get back on track.
+2 dependencies of this project are not yet compatible with Django 1.10. There are PRs that fix this but project maintainers didn't merge them yet.
+We temporarily deployed compatible versions as `-vinta`, we should come back to the main projects as soon as they get back on track.
 
 ### django-bootstrap-pagination
 
