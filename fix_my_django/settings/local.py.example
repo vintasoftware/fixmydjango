@@ -1,0 +1,35 @@
+from .base import * # noqa
+
+
+LOCAL = True
+DEBUG = True
+
+SECRET_KEY = 'secrete'
+
+ALLOWED_HOSTS = '*'
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': base_dir_join('db.sqlite3'),
+    }
+}
+
+INSTALLED_APPS += ('naomi', 'fixmydjango')
+
+EMAIL_BACKEND = 'naomi.mail.backends.naomi.NaomiBackend'
+EMAIL_FILE_PATH = base_dir_join('tmp_email')
+
+STATIC_URL = '/static/'
+MEDIA_URL = '/media/'
+
+COMPRESS_STORAGE = STATICFILES_STORAGE
+COMPRESS_URL = STATIC_URL
+
+REST_FRAMEWORK['DEFAULT_RENDERER_CLASSES'] = (
+    'rest_framework.renderers.BrowsableAPIRenderer',
+    'rest_framework.renderers.JSONRenderer',
+)
+
+FIX_MY_DJANGO_ADMIN_MODE = True
+LOG_REQUESTS = False
