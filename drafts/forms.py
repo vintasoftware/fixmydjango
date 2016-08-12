@@ -1,11 +1,14 @@
-# coding: utf-8
+import requests
 
 from django import forms
+from django.conf import settings
 
-from .models import Draft
+from core.utils import get_client_ip
+from drafts.models import Draft
 
 
 class DraftForm(forms.ModelForm):
+    recaptcha = forms.CharField()
 
     class Meta:
         model = Draft
@@ -14,6 +17,7 @@ class DraftForm(forms.ModelForm):
                   'django_version']
 
     def __init__(self, *args, **kwargs):
+        self.request = kwargs.pop('request', None)
         super().__init__(*args, **kwargs)
         initial = kwargs.get('initial')
 
@@ -21,3 +25,20 @@ class DraftForm(forms.ModelForm):
             for field in initial:
                 if field in self.fields:
                     self.fields[field].widget.attrs['readonly'] = True
+
+    def clean_recaptcha(self):
+        code = self.cleaned_data['recaptcha']
+        if not code:
+            raise forms.ValidationError('')
+
+        ip_address = get_client_ip(self.request)
+        response = requests.post('https://www.google.com/recaptcha/api/siteverify',
+                                 data={'secret': settings.RECAPTCHA_SECRETE_KEY,
+                                       'response': code,
+                                       'remoteip': ip_address})
+        res = response.json()
+        if not res['success']:
+            raise forms.ValidationError('')
+
+        return code
+
