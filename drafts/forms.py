@@ -28,7 +28,7 @@ class DraftForm(forms.ModelForm):
 
     def clean_recaptcha(self):
         code = self.cleaned_data['recaptcha']
-        if not settings.RECAPTCHA_SECRET_KEY:
+        if settings.RECAPTCHA_SECRET_KEY:
             ip_address = get_client_ip(self.request)
             response = requests.post('https://www.google.com/recaptcha/api/siteverify',
                                      data={'secret': settings.RECAPTCHA_SECRET_KEY,
