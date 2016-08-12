@@ -15,12 +15,13 @@ class TestDraftCreateView(TestCase):
             'exception_type': 'SomeException',
             'error_message': 'The message',
             'traceback': 'thetraceback',
-            'django_version': '1.9'
+            'django_version': '1.9',
+            'g-recaptcha-response': 'a'
         }
 
     def test_get_returns_200(self):
         self.assertGoodView(self.view_name)
 
     def test_creates_draft(self):
-        response = self.post(self.view_name, data=self.params)
+        self.post(self.view_name, data=self.params)
         self.response_302()

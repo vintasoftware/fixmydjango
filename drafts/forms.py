@@ -28,17 +28,15 @@ class DraftForm(forms.ModelForm):
 
     def clean_recaptcha(self):
         code = self.cleaned_data['recaptcha']
-        if not code:
-            raise forms.ValidationError('')
-
-        ip_address = get_client_ip(self.request)
-        response = requests.post('https://www.google.com/recaptcha/api/siteverify',
-                                 data={'secret': settings.RECAPTCHA_SECRETE_KEY,
-                                       'response': code,
-                                       'remoteip': ip_address})
-        res = response.json()
-        if not res['success']:
-            raise forms.ValidationError('')
+        if not settings.RECAPTCHA_SECRETE_KEY:
+            ip_address = get_client_ip(self.request)
+            response = requests.post('https://www.google.com/recaptcha/api/siteverify',
+                                     data={'secret': settings.RECAPTCHA_SECRETE_KEY,
+                                           'response': code,
+                                           'remoteip': ip_address})
+            res = response.json()
+            if not res['success']:
+                raise forms.ValidationError('Invalid Recaptcha')
 
         return code
 
