@@ -180,3 +180,6 @@ META_SITE_DOMAIN = 'http://www.fixmydjango.com'
 
 # Messages
 MESSAGE_STORAGE = 'django.contrib.messages.storage.cookie.CookieStorage'
+
+RECAPTCHA_KEY = config('RECAPTCHA_KEY', default='')
+RECAPTCHA_SECRET_KEY = config('RECAPTCHA_SECRET_KEY', default='')

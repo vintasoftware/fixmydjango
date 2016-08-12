@@ -1,3 +1,5 @@
+from copy import copy
+
 from django.contrib import messages
 from django.views.generic import CreateView
 from django.core.urlresolvers import reverse
@@ -17,6 +19,20 @@ class DraftCreateView(CreateView):
         for key, values in self.request.GET.items():
             initial[key] = values
         return initial
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['RECAPTCHA_KEY'] = settings.RECAPTCHA_KEY
+        return context
+
+    def get_form_kwargs(self):
+        kwargs = super().get_form_kwargs()
+        if self.request.method == 'POST':
+            data = copy(kwargs.get('data', {}))
+            data['recaptcha'] = data.get('g-recaptcha-response')
+            kwargs['data'] = data
+            kwargs['request'] = self.request
+        return kwargs
 
     def form_valid(self, form):
         response = super().form_valid(form)
