@@ -17,3 +17,6 @@ STATIC_URL = '/static/'
 
 MEDIA_ROOT = 'mediafiles'
 MEDIA_URL = '/media/'
+
+RECAPTCHA_KEY = ''
+RECAPTCHA_SECRET_KEY = ''
