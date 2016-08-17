@@ -9,7 +9,9 @@ SECRET_KEY = config('SECRET_KEY')
 
 ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv())
 
-DATABASES['default'] = dj_database_url.config()
+DATABASES = {
+    'default': dj_database_url.config()
+}
 
 SERVER_EMAIL = config('SERVER_EMAIL')
 EMAIL_HOST = config('EMAIL_HOST')
