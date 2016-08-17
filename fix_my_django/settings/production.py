@@ -40,7 +40,7 @@ COMPRESS_URL = STATIC_URL
 # collectfast
 AWS_PRELOAD_METADATA = True
 COLLECTFAST_ENABLED = True
-COLLECTFAST_CACHE = 'collectfast'
+# COLLECTFAST_CACHE = 'collectfast'
 
 # recaptcha
 RECAPTCHA_KEY = config('RECAPTCHA_KEY')
