@@ -48,24 +48,24 @@ RECAPTCHA_SECRET_KEY = config('RECAPTCHA_SECRET_KEY')
 
 # caches
 
-CACHES = {
-    'default': {
-        'BACKEND': 'django_bmemcached.memcached.BMemcached',
-        'LOCATION': config('MEMCACHEDCLOUD_SERVERS', cast=Csv()),
-        'OPTIONS': {
-            'username': config('MEMCACHEDCLOUD_USERNAME'),
-            'password': config('MEMCACHEDCLOUD_PASSWORD')
-        }
-    },
-    'collectfast': {
-        'BACKEND': 'django.core.cache.backends.db.DatabaseCache',
-        'LOCATION': 'django_db_cache_collectfast',
-        'TIMEOUT': 60 * 60 * 24 * 7,  # 1 week
-        'OPTIONS': {
-            'MAX_ENTRIES': 10000
-        }
-    }
-}
+# CACHES = {
+#     'default': {
+#         'BACKEND': 'django_bmemcached.memcached.BMemcached',
+#         'LOCATION': config('MEMCACHEDCLOUD_SERVERS', cast=Csv()),
+#         'OPTIONS': {
+#             'username': config('MEMCACHEDCLOUD_USERNAME'),
+#             'password': config('MEMCACHEDCLOUD_PASSWORD')
+#         }
+#     },
+#     'collectfast': {
+#         'BACKEND': 'django.core.cache.backends.db.DatabaseCache',
+#         'LOCATION': 'django_db_cache_collectfast',
+#         'TIMEOUT': 60 * 60 * 24 * 7,  # 1 week
+#         'OPTIONS': {
+#             'MAX_ENTRIES': 10000
+#         }
+#     }
+# }
 
 # Logging
 
