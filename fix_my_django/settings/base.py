@@ -43,6 +43,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'django.contrib.sitemaps',
 
+    'webpack_loader',
     'corsheaders',
     'rest_framework',
     'djangobower',
@@ -137,23 +138,15 @@ STATICFILES_FINDERS = (
     'compressor.finders.CompressorFinder',
 )
 
+STATICFILES_DIRS = (
+    base_dir_join('assets'),
+)
+
 MEDIA_ROOT = base_dir_join('media')
 STATIC_ROOT = base_dir_join('staticfiles')
 
 STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
 DEFAULT_FILE_STORAGE = 'django.core.files.storage.FileSystemStorage'
-
-# Bower
-
-BOWER_COMPONENTS_ROOT = base_dir_join('components')
-
-BOWER_INSTALLED_APPS = (
-    'bootstrap-sass-official#3.3.4',
-    'jquery#2.1.4',
-    'font-awesome#4.3.0',
-    'select2#4.0.0',
-    'select2-bootstrap-theme#0.1.0-beta.3',
-)
 
 # Compressor
 COMPRESS_ENABLED = True

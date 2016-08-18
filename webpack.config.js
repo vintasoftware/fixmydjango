@@ -13,12 +13,13 @@ module.exports = {
     'webpack-dev-server/client?http://localhost:3000',
     'webpack/hot/only-dev-server',
     // 'bootstrap-loader/extractStyles',
+    'bootstrap-sass!./bootstrap-sass.config.js',
     './assets/js/index',
   ],
   output: {
     path: path.resolve('./assets/bundles/'),
     publicPath: 'http://localhost:3000/assets/bundles/',
-    filename: '[name]-[hash].js',
+    filename: 'bundle.js',
   },
   module: {
     loaders: [
@@ -40,8 +41,8 @@ module.exports = {
         ],
       },
       {
-        test: /bootstrap\/js\//, loader: 'imports?jQuery=jquery'
-      },
+        test:/bootstrap-sass[\/\\]assets[\/\\]javascripts[\/\\]/,
+        loader: 'imports?jQuery=jquery' },
       {
         test: /\.jsx?$/,
         exclude: [node_modules_dir],

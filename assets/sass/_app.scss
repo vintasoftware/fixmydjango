@@ -1,28 +1,3 @@
-$icon-font-path: "../bootstrap-sass/assets/fonts/bootstrap/";
-
-$django-light-green: #C9F0DD;
-$django-green: #44B78B;
-$django-dark-green: #0C4B33;
-$nav-link-hover-bg: transparent;
-$nav-tabs-active-link-hover-bg: transparent;
-$navbar-height: 60px;
-$navbar-padding-vertical: 20px;
-$navbar-default-bg: $django-dark-green;
-$navbar-default-brand-color: white;
-$navbar-default-brand-hover-color: $django-green;
-$navbar-default-color: white;
-$navbar-default-link-color: white;
-$navbar-default-link-hover-color: $django-light-green;
-$navbar-default-link-actie-color: $django-light-green;
-$navbar-default-toggle-border-color: white;
-$navbar-default-toggle-hover-bg: transparent;
-$navbar-default-toggle-icon-bar-bg: white;
-
-@import "sass/bootswatch-lumen/_variables.scss";
-@import "bootstrap-sass/assets/stylesheets/bootstrap.scss";
-@import "sass/bootswatch-lumen/_bootswatch.scss";
-@import "select2-bootstrap-theme/src/select2-bootstrap.scss";
-
 $form-control-default-box-shadow: inset 0 2px 0 rgba(0, 0, 0, .075);
 .select2-container--bootstrap {  // Fix for select2 to match bootswatch theme
   .select2-selection {

@@ -17,7 +17,7 @@ module.exports = {
   // customization value based on another value.
   bootstrapCustomizations: './_bootstrap-customizations.scss',
 
-  mainSass: './_main.scss',
+  mainSass: './assets/sass/style.scss',
 
   // Default for the style loading
   styleLoader: 'style-loader!css-loader!sass-loader',

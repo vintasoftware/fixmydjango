@@ -12,19 +12,10 @@
 
   <meta charset="utf-8">
 
-  {% comment %}
-  {% compress css %}
-    <link rel="stylesheet" type="text/css" href="{% static 'font-awesome/css/font-awesome.min.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'select2/dist/css/select2.css' %}">
-    <link rel="stylesheet" type="text/x-scss" href="{% static 'sass/app.scss' %}">
-    <style type="text/css">
-      {% pygments_css %}
-    </style>
-  {% endcompress %}
-  {% endcomment %}
+  <script src="https://use.fontawesome.com/5db5e813c5.js"></script>
 
   <!-- Webpack rendered CSS -->
-  {% render_bundle 'main' 'css' %}
+  {% render_bundle 'main' %}
 
   {% block metatags %}
     {% include 'meta.html' %}
@@ -116,19 +107,7 @@
     return t;
   }(document, "script", "twitter-wjs"));</script>
 
-  {% comment %}
-    {% compress js %}
-      <script type="text/javascript" src="{% static 'jquery/dist/jquery.js' %}"></script>
-      <script type="text/javascript" src="{% static 'bootstrap-sass/assets/javascripts/bootstrap.js' %}"></script>
-      <script type="text/javascript" src="{% static 'select2/dist/js/select2.js' %}"></script>
-
-      {% block js %}
-      {% endblock %}
-    {% endcompress %}
-  {% endcomment %}
-
-
   <!-- Webpack rendered Javascript -->
-  {% render_bundle 'main' 'js' %}
+  {# {% render_bundle 'main' 'js' %} #}
 </body>
 </html>

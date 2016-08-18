@@ -1,9 +1,8 @@
 // Main Style
 
 // Vendor
-// @import "vendor/spritesmith";
+@import "~select2-bootstrap-theme/src/select2-bootstrap";
 
 // General
-@import "bootswatch-lumen/all";
 @import "app";
-
+@import "bootswatch-lumen/all";
