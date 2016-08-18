@@ -180,3 +180,14 @@ META_SITE_DOMAIN = 'http://www.fixmydjango.com'
 
 # Messages
 MESSAGE_STORAGE = 'django.contrib.messages.storage.cookie.CookieStorage'
+
+# Webpack
+WEBPACK_LOADER = {
+    'DEFAULT': {
+        'CACHE': True,
+        'BUNDLE_DIR_NAME': 'bundles/',  # must end with slash
+        'STATS_FILE': base_dir_join('webpack-stats.json'),
+        'POLL_INTERVAL': 0.1,
+        'IGNORE': ['.+\.hot-update.js', '.+\.map']
+    }
+}

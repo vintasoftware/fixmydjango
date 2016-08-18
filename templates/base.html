@@ -1,5 +1,6 @@
 {% load staticfiles %}
-{% load compress %}
+{# {% load compress %} #}
+{% load render_bundle from webpack_loader %}
 {% load pygments_tags %}
 
 <!DOCTYPE html>
@@ -11,6 +12,7 @@
 
   <meta charset="utf-8">
 
+  {% comment %}
   {% compress css %}
     <link rel="stylesheet" type="text/css" href="{% static 'font-awesome/css/font-awesome.min.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'select2/dist/css/select2.css' %}">
@@ -19,6 +21,10 @@
       {% pygments_css %}
     </style>
   {% endcompress %}
+  {% endcomment %}
+
+  <!-- Webpack rendered CSS -->
+  {% render_bundle 'main' 'css' %}
 
   {% block metatags %}
     {% include 'meta.html' %}
@@ -109,13 +115,20 @@
 
     return t;
   }(document, "script", "twitter-wjs"));</script>
-  {% compress js %}
-    <script type="text/javascript" src="{% static 'jquery/dist/jquery.js' %}"></script>
-    <script type="text/javascript" src="{% static 'bootstrap-sass/assets/javascripts/bootstrap.js' %}"></script>
-    <script type="text/javascript" src="{% static 'select2/dist/js/select2.js' %}"></script>
 
-    {% block js %}
-    {% endblock %}
-  {% endcompress %}
+  {% comment %}
+    {% compress js %}
+      <script type="text/javascript" src="{% static 'jquery/dist/jquery.js' %}"></script>
+      <script type="text/javascript" src="{% static 'bootstrap-sass/assets/javascripts/bootstrap.js' %}"></script>
+      <script type="text/javascript" src="{% static 'select2/dist/js/select2.js' %}"></script>
+
+      {% block js %}
+      {% endblock %}
+    {% endcompress %}
+  {% endcomment %}
+
+
+  <!-- Webpack rendered Javascript -->
+  {% render_bundle 'main' 'js' %}
 </body>
 </html>
