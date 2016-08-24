@@ -1,4 +1,4 @@
-# fixmydjango ![Travis CI](https://travis-ci.org/vintasoftware/fixmydjango.svg?branch=master)
+# fixmydjango [![Travis CI](https://travis-ci.org/vintasoftware/fixmydjango.svg?branch=master)](https://travis-ci.org/vintasoftware/fixmydjango)
 Code of [http://www.fixmydjango.com](http://www.fixmydjango.com)
 
 This is the website and backend behind [fixmydjango-lib](https://github.com/vintasoftware/fixmydjango-lib). While developing a Django project, if you get any exception in development server and [fixmydjango.com](http://www.fixmydjango.com) has a solution for it, [fixmydjango-lib](https://github.com/vintasoftware/fixmydjango-lib) will display a link to the solution in the error 500 debug template.
