@@ -13,3 +13,4 @@
 .python-version
 .cache/*
 /fix_my_django/settings/local.py
+/node_modules/
