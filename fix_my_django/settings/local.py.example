@@ -36,3 +36,4 @@ LOG_REQUESTS = False
 
 RECAPTCHA_KEY = config('RECAPTCHA_KEY', default='')
 RECAPTCHA_SECRET_KEY = config('RECAPTCHA_SECRET_KEY', default='')
+BOWER_PATH = base_dir_join('node_modules/bower/bin/bower')

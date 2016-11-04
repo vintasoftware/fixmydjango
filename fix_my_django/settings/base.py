@@ -32,6 +32,7 @@ ADMINS = (
 
 MANAGERS = ADMINS
 
+
 # Application definition
 
 INSTALLED_APPS = (
@@ -180,3 +181,7 @@ META_SITE_DOMAIN = 'http://www.fixmydjango.com'
 
 # Messages
 MESSAGE_STORAGE = 'django.contrib.messages.storage.cookie.CookieStorage'
+
+# Login
+LOGIN_URL = '/login/'
+LOGIN_REDIRECT_URL = '/'
