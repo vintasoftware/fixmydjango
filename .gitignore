@@ -16,3 +16,4 @@
 /node_modules/
 fix.sublime-project
 fix.sublime-workspace
+*.dump

@@ -29,6 +29,7 @@ PyPI name: django-markdown-vinta
 ### Quickstart
 - Create a copy of ``fix_my_django/settings/local.py.example`` in ``fix_my_django/settings/local.py``
 - Create a ``.env`` file in the root of the project and add ``DJANGO_SETTINGS_MODULE="fix_my_django.settings.local"`` to it
+- Create a PostgreSQL named `fixmydjango`
 
 ### Running the project
 
