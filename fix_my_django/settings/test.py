@@ -6,10 +6,9 @@ DEBUG = True
 SECRET_KEY = 'secrete'
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': base_dir_join('db.sqlite3'),
-    }
+    'default': config('DATABASE_URL',
+                      default='postgresql://localhost:5432/fixmydjango',
+                      cast=dj_database_url.parse),
 }
 
 STATIC_ROOT = 'staticfiles'

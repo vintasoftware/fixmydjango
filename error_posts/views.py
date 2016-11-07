@@ -22,3 +22,12 @@ class ErrorPostDetailView(ErrorPostMetadataMixin, generic.DetailView):
 
     def get_queryset(self):
         return ErrorPost.publisheds.all()
+
+
+class NonPublishedErrorPostListView(ErrorPostListMetadataMixin, FilterViewWithPagination):
+    template_name = 'error_posts/non_published_list.html'
+    filterset_class = ExceptionSearchFilter
+    paginate_by = 50
+
+    def get_queryset(self):
+        return ErrorPost.non_publisheds.all()

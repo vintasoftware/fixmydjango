@@ -59,6 +59,9 @@
           <li><a href="http://www.vinta.com.br/" target="_blank">by Vinta Software Studio</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
+          <li><a href="{% url 'error_posts:non_published_list' %}">Non published posts</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
           {% if user.is_authenticated %}
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">

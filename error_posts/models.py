@@ -12,7 +12,7 @@ from autoslug.settings import slugify
 
 from fixmydjango.sanitize_tb import clean_traceback, sanitize_traceback
 from .choices import DJANGO_VERSIONS
-from .managers import ErrorPostPublishedManager
+from .managers import PublishedManager, NonPublishedManager
 
 
 def _generate_slug(error_post):
@@ -35,7 +35,8 @@ class ErrorPost(TimeStampedModel):
     slug = AutoSlugField(populate_from=_generate_slug, unique=True)
 
     objects = models.Manager()
-    publisheds = ErrorPostPublishedManager()
+    publisheds = PublishedManager()
+    non_publisheds = NonPublishedManager()
 
     def __unicode__(self):
         return u'{} - {} - {}'.format(
@@ -59,8 +60,9 @@ class ErrorPost(TimeStampedModel):
     def save(self, *args, **kwargs):
         self.traceback = clean_traceback(self.traceback)
         self.sanitized_traceback = sanitize_traceback(self.traceback)
-        self.parsed_traceback = ParsedException.from_string(self.sanitized_traceback).to_dict()
-
+        self.parsed_traceback = ParsedException.from_string(
+            self.sanitized_traceback
+        ).to_dict()
         last_frame = self.parsed_traceback['frames'][-1]
         self.raised_by = self._get_raised_by(last_frame)
         self.raised_by_line = self._get_raised_by_line(last_frame)
