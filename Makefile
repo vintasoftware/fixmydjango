@@ -4,6 +4,9 @@ run:
 shell:
 	python manage.py shell
 
+test:
+	python manage.py test --keepdb
+
 restore_db:
 	heroku pg:backups capture -a fixmydjango
 	curl -o latest.dump `heroku pg:backups public-url -a fixmydjango`
