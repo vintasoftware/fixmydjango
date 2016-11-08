@@ -50,11 +50,13 @@ class ErrorPost(TimeStampedModel):
             except ValueError as e:
                 raise ValidationError({'traceback': e.message})
 
-    def _get_raised_by(self, last_frame):
+    def _get_raised_by(self):
+        last_frame = self.parsed_traceback['frames'][-1]
         filepath = last_frame['filepath']
         return filepath[filepath.index('django/'):]
 
-    def _get_raised_by_line(self, last_frame):
+    def _get_raised_by_line(self):
+        last_frame = self.parsed_traceback['frames'][-1]
         return int(last_frame['lineno'])
 
     def save(self, *args, **kwargs):
@@ -63,10 +65,8 @@ class ErrorPost(TimeStampedModel):
         self.parsed_traceback = ParsedException.from_string(
             self.sanitized_traceback
         ).to_dict()
-        last_frame = self.parsed_traceback['frames'][-1]
-        self.raised_by = self._get_raised_by(last_frame)
-        self.raised_by_line = self._get_raised_by_line(last_frame)
-
+        self.raised_by = self._get_raised_by()
+        self.raised_by_line = self._get_raised_by_line()
         super(ErrorPost, self).save(*args, **kwargs)
 
 

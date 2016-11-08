@@ -1,0 +1,4 @@
+{% block subject %}New error_post submited{% endblock %}
+{% block plain %}
+  {{ error_post_url }}
+{% endblock %}

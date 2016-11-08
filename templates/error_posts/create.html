@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+{% load widget_tweaks %}
+
+{% block title %}
+  <title>Fix My Django - Insert an Error</title>
+{% endblock title %}
+
+{% block content %}
+  <div class="row">
+    <div class="panel" >
+      <div class="panel-create panel-heading">Insert an Error</div>
+      <div class="panel-body">
+        <form class="create-draft-form" method="post">
+          {% csrf_token %}
+            <div class="row">
+              <div class="col-md-12">
+                <h3>Error Information</h3>
+                <div class="form-group {% if form.django_version.errors %} has-error {% endif %}">
+                  <label class="text required control-label">Django Version*</label>
+                  {{ form.django_version|add_class:'form-control'}}
+                </div>
+                <div class="form-group {% if form.exception_type.errors %} has-error {% endif %}">
+                  <label class="text required control-label">Exception Type*</label>
+                  {{ form.exception_type|add_class:'form-control'}}
+                </div>
+                <div class="form-group {% if form.error_message.errors %} has-error {% endif %}">
+                  <label class="text required control-label">Error Message*</label>
+                  {{ form.error_message|add_class:'form-control'}}
+                </div>
+                <div class="form-group {% if form.traceback.errors %} has-error {% endif %}">
+                  <label class="text required control-label">Traceback*</label>
+                  {{ form.traceback|add_class:'form-control'}}
+                </div>
+                <div class="form-group {% if form.how_to_reproduce.errors %} has-error {% endif %}">
+                  <label class="text required control-label">How to reproduce</label>
+                  {{ form.how_to_reproduce|add_class:'form-control'}}
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                <h3>Personal Information</h3>
+                <p>We will let you know if we know how to solve your problem</p>
+              </div>
+              <div class="col-md-6">
+                  <div class="form-group required {% if form.author.errors %} has-error {% endif %}">
+                    <label class="text required control-label">Name*</label>
+                    {{ form.author|add_class:'form-control'}}
+                  </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group required {% if form.email.errors %}has-error{% endif %}">
+                    <label class="text required control-label">E-mail*
+                    </label>
+                    {{ form.email|add_class:'form-control required'}}
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                <div class="pull-right">
+                  <div class="g-recaptcha" data-sitekey="{{ RECAPTCHA_KEY }}"></div>
+                </div>
+              </div>
+            </div>
+          <button class="btn btn-success pull-right" type="submit">Send</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script src='https://www.google.com/recaptcha/api.js'></script>
+{% endblock content %}
