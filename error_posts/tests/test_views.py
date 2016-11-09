@@ -35,8 +35,11 @@ class TestErrorPostDetailView(TestCase):
 
     def test_get_returns_200(self):
         response = self.client.get(self.view_url)
-
         self.assertEqual(response.status_code, 200)
+
+    def test_get_returns_error_post(self):
+        response = self.client.get(self.view_url)
+        self.assertEqual(response.context['object'].pk, 4)
 
 
 class TestErrorPostNonPublishedListView(TestCase):

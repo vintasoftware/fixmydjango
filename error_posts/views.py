@@ -16,7 +16,7 @@ from .forms import ErrorPostForm
 
 
 class ErrorPostListView(ErrorPostListMetadataMixin, FilterViewWithPagination):
-    template_name = 'error_posts/list.html'
+    template_name = 'error_posts/published_list.html'
     filterset_class = ExceptionSearchFilter
     paginate_by = 50
 
@@ -28,7 +28,7 @@ class ErrorPostDetailView(ErrorPostMetadataMixin, generic.DetailView):
     template_name = 'error_posts/detail.html'
 
     def get_queryset(self):
-        return ErrorPost.publisheds.all()
+        return ErrorPost.objects.all()
 
 
 class NonPublishedErrorPostListView(ErrorPostListMetadataMixin, FilterViewWithPagination):
