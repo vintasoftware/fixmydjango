@@ -38,3 +38,12 @@ PyPI name: django-markdown-vinta
 - `python manage.py migrate`
 - `python manage.py bower_install`
 - `python manage.py runserver`
+
+### Running simple
+
+- `make run`
+- `make shell`
+- `make test`
+- `make restore_db` (Get production database)
+
+
