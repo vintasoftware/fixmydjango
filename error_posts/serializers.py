@@ -11,7 +11,7 @@ class ErrorPostSearchSerializer(serializers.ListSerializer):
     def _get_list_url(self, request):
         return "{url}?{query}".format(
             url=reverse('error_posts:list', request=request),
-            query=urllib.urlencode(request.GET))
+            query=urllib.parse.urlencode(request.GET))
 
     def to_representation(self, data):
         error_post_list = super(ErrorPostSearchSerializer, self).to_representation(data)
