@@ -58,6 +58,7 @@ INSTALLED_APPS = (
     # Apps
     'core',
     'error_posts',
+    'users',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -185,3 +186,6 @@ MESSAGE_STORAGE = 'django.contrib.messages.storage.cookie.CookieStorage'
 # Login
 LOGIN_URL = '/login/'
 LOGIN_REDIRECT_URL = '/'
+
+# Auth
+AUTH_USER_MODEL = 'users.User'

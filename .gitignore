@@ -17,3 +17,4 @@
 fix.sublime-project
 fix.sublime-workspace
 *.dump
+tox.ini
