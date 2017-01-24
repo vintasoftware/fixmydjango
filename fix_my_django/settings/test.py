@@ -1,9 +1,13 @@
+import dj_database_url
+
+from decouple import config
+
 from .base import * # noqa
 
 
 DEBUG = True
 
-SECRET_KEY = 'secrete'
+SECRET_KEY = 'secret'
 
 DATABASES = {
     'default': config('DATABASE_URL',

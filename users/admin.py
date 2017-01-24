@@ -1,6 +1,7 @@
 from django import forms
 from django.utils.translation import ugettext as _
 from django.contrib import admin
+from django.contrib.auth.admin import UserAdmin
 from django.contrib.auth.forms import ReadOnlyPasswordHashField
 
 from .models import User
@@ -51,7 +52,7 @@ class UserChangeForm(forms.ModelForm):
         return self.initial["password"]
 
 
-class CustomUserAdmin(admin.UserAdmin):
+class CustomUserAdmin(UserAdmin):
     add_form = UserCreationForm
     form = UserChangeForm
 
