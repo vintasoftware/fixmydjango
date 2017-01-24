@@ -1,14 +1,9 @@
-from django.contrib import admin
-
-from .models import User
-
 from django import forms
-from django.contrib import admin
 from django.utils.translation import ugettext as _
-from django.contrib.auth.admin import UserAdmin
+from django.contrib import admin
 from django.contrib.auth.forms import ReadOnlyPasswordHashField
 
-from users.models import User
+from .models import User
 
 
 class UserCreationForm(forms.ModelForm):
@@ -56,7 +51,7 @@ class UserChangeForm(forms.ModelForm):
         return self.initial["password"]
 
 
-class CustomUserAdmin(UserAdmin):
+class CustomUserAdmin(admin.UserAdmin):
     add_form = UserCreationForm
     form = UserChangeForm
 
@@ -81,5 +76,6 @@ class CustomUserAdmin(UserAdmin):
             'classes': ('wide',),
             'fields': ('email', 'password1', 'password2')}),
     )
+
 
 admin.site.register(User, CustomUserAdmin)
