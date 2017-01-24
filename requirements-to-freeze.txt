@@ -8,6 +8,7 @@ django-autoslug==1.9.3
 django-bmemcached==0.2.2
 django-bootstrap-pagination==1.6.2
 django-bower==5.0.4
+django-braces==1.10.0
 django-compressor==2.1
 django-cors-headers==1.1.0
 django-filter==0.13.0
