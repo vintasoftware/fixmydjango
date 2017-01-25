@@ -11,7 +11,7 @@ from templated_email import send_templated_mail
 from core.generic_views import FilterViewWithPagination
 from .mixins import ErrorPostListMetadataMixin, ErrorPostMetadataMixin
 from .filtersets import ExceptionSearchFilter
-from .models import ErrorPost
+from .models import ErrorPost, ErrorPostPublished, ErrorPostNonPublished
 from .forms import ErrorPostForm
 
 
@@ -21,7 +21,7 @@ class ErrorPostListView(ErrorPostListMetadataMixin, FilterViewWithPagination):
     paginate_by = 50
 
     def get_queryset(self):
-        return ErrorPost.publisheds.all()
+        return ErrorPostPublished.objects.all()
 
 
 class ErrorPostDetailView(ErrorPostMetadataMixin, generic.DetailView):
@@ -37,7 +37,7 @@ class NonPublishedErrorPostListView(ErrorPostListMetadataMixin, FilterViewWithPa
     paginate_by = 50
 
     def get_queryset(self):
-        return ErrorPost.non_publisheds.all()
+        return ErrorPostNonPublished.objects.all()
 
 
 class ErrorPostCreateView(generic.CreateView):

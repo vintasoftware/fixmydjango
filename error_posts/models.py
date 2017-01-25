@@ -35,8 +35,6 @@ class ErrorPost(TimeStampedModel):
     slug = AutoSlugField(populate_from=_generate_slug, unique=True)
 
     objects = models.Manager()
-    publisheds = PublishedManager()
-    non_publisheds = NonPublishedManager()
 
     def __unicode__(self):
         return u'{} - {} - {}'.format(
@@ -68,6 +66,20 @@ class ErrorPost(TimeStampedModel):
         self.raised_by = self._get_raised_by()
         self.raised_by_line = self._get_raised_by_line()
         super(ErrorPost, self).save(*args, **kwargs)
+
+
+class ErrorPostPublished(ErrorPost):
+    objects = PublishedManager()
+
+    class Meta:
+        proxy = True
+
+
+class ErrorPostNonPublished(ErrorPost):
+    objects = NonPublishedManager()
+
+    class Meta:
+        proxy = True
 
 
 class Answer(TimeStampedModel):
