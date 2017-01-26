@@ -46,8 +46,8 @@ COLLECTFAST_ENABLED = True
 # COLLECTFAST_CACHE = 'collectfast'
 
 # recaptcha
-RECAPTCHA_KEY = config('RECAPTCHA_KEY')
-RECAPTCHA_SECRET_KEY = config('RECAPTCHA_SECRET_KEY')
+RECAPTCHA_KEY = config('RECAPTCHA_KEY', default='')
+RECAPTCHA_SECRET_KEY = config('RECAPTCHA_SECRET_KEY', default='')
 
 # caches
 
