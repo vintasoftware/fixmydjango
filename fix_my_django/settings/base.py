@@ -123,8 +123,8 @@ STATICFILES_FINDERS = (
     'compressor.finders.CompressorFinder',
 )
 
-MEDIA_ROOT = base_dir_join('media')
-STATIC_ROOT = base_dir_join('staticfiles')
+MEDIA_ROOT = 'media'
+STATIC_ROOT = 'staticfiles'
 
 STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
 DEFAULT_FILE_STORAGE = 'django.core.files.storage.FileSystemStorage'
