@@ -19,9 +19,9 @@ $navbar-default-toggle-hover-bg: transparent;
 $navbar-default-toggle-icon-bar-bg: white;
 
 @import "bootswatch-lumen/_variables.scss";
-@import "bootstrap-sass/assets/stylesheets/bootstrap.scss";
+@import "../../../components/bower_components/bootstrap-sass/assets/stylesheets/bootstrap.scss";
 @import "bootswatch-lumen/_bootswatch.scss";
-@import "select2-bootstrap-theme/src/select2-bootstrap.scss";
+@import "../../../components/bower_components/select2-bootstrap-theme/src/select2-bootstrap.scss";
 
 $form-control-default-box-shadow: inset 0 2px 0 rgba(0, 0, 0, .075);
 .select2-container--bootstrap {  // Fix for select2 to match bootswatch theme
