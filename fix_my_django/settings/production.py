@@ -4,6 +4,7 @@ from decouple import config, Csv
 
 from .base import * # noqa
 
+COMPRESS_ENABLE = False
 
 LOCAL = False
 DEBUG = False
