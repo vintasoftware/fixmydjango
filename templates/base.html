@@ -1,5 +1,4 @@
 {% load staticfiles %}
-{% load compress %}
 {% load pygments_tags %}
 
 <!DOCTYPE html>
@@ -11,14 +10,12 @@
 
   <meta charset="utf-8">
 
-  {% compress css %}
-    <link rel="stylesheet" type="text/css" href="{% static 'font-awesome/css/font-awesome.min.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'select2/dist/css/select2.css' %}">
-    <link rel="stylesheet" type="text/x-scss" href="{% static 'sass/app.scss' %}">
-    <style type="text/css">
-      {% pygments_css %}
-    </style>
-  {% endcompress %}
+  <link rel="stylesheet" type="text/css" href="{% static 'font-awesome/css/font-awesome.min.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'select2/dist/css/select2.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/custom-style.css' %}">
+  <style type="text/css">
+    {% pygments_css %}
+  </style>
 
   {% block metatags %}
     {% include 'meta.html' %}
@@ -127,13 +124,11 @@
 
     return t;
   }(document, "script", "twitter-wjs"));</script>
-  {% compress js %}
-    <script type="text/javascript" src="{% static 'jquery/dist/jquery.js' %}"></script>
-    <script type="text/javascript" src="{% static 'bootstrap-sass/assets/javascripts/bootstrap.js' %}"></script>
-    <script type="text/javascript" src="{% static 'select2/dist/js/select2.js' %}"></script>
+  <script type="text/javascript" src="{% static 'jquery/dist/jquery.js' %}"></script>
+  <script type="text/javascript" src="{% static 'bootstrap-sass/assets/javascripts/bootstrap.js' %}"></script>
+  <script type="text/javascript" src="{% static 'select2/dist/js/select2.js' %}"></script>
 
-    {% block js %}
-    {% endblock %}
-  {% endcompress %}
+  {% block js %}
+  {% endblock %}
 </body>
 </html>

@@ -23,9 +23,6 @@ EMAIL_FILE_PATH = base_dir_join('tmp_email')
 STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
 
-COMPRESS_STORAGE = STATICFILES_STORAGE
-COMPRESS_URL = STATIC_URL
-
 REST_FRAMEWORK['DEFAULT_RENDERER_CLASSES'] = (
     'rest_framework.renderers.BrowsableAPIRenderer',
     'rest_framework.renderers.JSONRenderer',

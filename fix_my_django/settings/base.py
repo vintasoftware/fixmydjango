@@ -120,7 +120,6 @@ STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
 
     'djangobower.finders.BowerFinder',
-    'compressor.finders.CompressorFinder',
 )
 
 MEDIA_ROOT = 'media'
@@ -139,17 +138,6 @@ BOWER_INSTALLED_APPS = (
     'font-awesome#4.3.0',
     'select2#4.0.0',
     'select2-bootstrap-theme#0.1.0-beta.3',
-)
-
-# Compressor
-COMPRESS_ENABLED = True
-
-COMPRESS_PRECOMPILERS = (
-    ('text/x-scss', 'core.compressor_filters.PatchedSCSSCompiler'),
-)
-
-COMPRESS_CSS_FILTERS = (
-    'core.compressor_filters.CustomCssAbsoluteFilter',
 )
 
 # Markdown settings
