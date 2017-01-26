@@ -124,7 +124,7 @@ STATICFILES_FINDERS = (
 )
 
 MEDIA_ROOT = 'media'
-STATIC_ROOT = 'staticfiles'
+STATIC_ROOT = 'static'
 
 STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
 DEFAULT_FILE_STORAGE = 'django.core.files.storage.FileSystemStorage'
