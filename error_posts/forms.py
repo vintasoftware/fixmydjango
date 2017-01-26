@@ -4,27 +4,27 @@ from django import forms
 from django.conf import settings
 
 from core.utils import get_client_ip
-from drafts.models import Draft
+from error_posts.models import ErrorPost
 
 
-class DraftForm(forms.ModelForm):
+class ErrorPostForm(forms.ModelForm):
     recaptcha = forms.CharField()
 
     class Meta:
-        model = Draft
-        fields = ['author', 'email', 'exception_type',
-                  'error_message', 'traceback', 'how_to_reproduce',
-                  'django_version']
+        model = ErrorPost
+        fields = ['exception_type', 'error_message', 'traceback',
+                  'how_to_reproduce', 'django_version']
 
     def __init__(self, *args, **kwargs):
         self.request = kwargs.pop('request', None)
         super().__init__(*args, **kwargs)
         initial = kwargs.get('initial')
-
         if initial:
             for field in initial:
                 if field in self.fields:
                     self.fields[field].widget.attrs['readonly'] = True
+        if settings.DEBUG:
+            self.fields['recaptcha'].required = False
 
     def clean_recaptcha(self):
         code = self.cleaned_data['recaptcha']
@@ -37,6 +37,4 @@ class DraftForm(forms.ModelForm):
             res = response.json()
             if not res['success']:
                 raise forms.ValidationError('Invalid Recaptcha')
-
         return code
-

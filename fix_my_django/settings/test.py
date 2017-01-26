@@ -1,15 +1,18 @@
+import dj_database_url
+
+from decouple import config
+
 from .base import * # noqa
 
 
 DEBUG = True
 
-SECRET_KEY = 'secrete'
+SECRET_KEY = 'secret'
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': base_dir_join('db.sqlite3'),
-    }
+    'default': config('DATABASE_URL',
+                      default='postgresql://localhost:5432/fixmydjango',
+                      cast=dj_database_url.parse),
 }
 
 STATIC_ROOT = 'staticfiles'

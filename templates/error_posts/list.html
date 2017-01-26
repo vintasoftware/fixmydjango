@@ -22,12 +22,13 @@
       </div>
     {% endfor %}
   {% endif %}
-  <div class="col-md-12">
-    <p class="lead"><b>Fix my Django</b> shows common Django exceptions and how to fix them. <br>Use the filters below to find the error you're having.</p>
-  </div>
+
+  {% block content_title %}
+
+  {% endblock content_title %}
   <div class="col-md-12 insert-error-btn">
     <a href="https://github.com/vintasoftware/fixmydjango-lib" target="_blank"><button class="btn btn-success ">Install the extension</button></a>
-    <a href="{% url 'drafts:create' %}"><button class="btn btn-danger pull-right">Submit an error</button></a>
+    <a href="{% url 'error_posts:create' %}"><button class="btn btn-danger pull-right">Submit an error</button></a>
   </div>
   <div class="col-md-12">
     <form action="" method="get" class="list-filter-form form-inline">
@@ -64,14 +65,14 @@
 <div class="row error-post-list-row">
   <div class="col-md-12">
     <ul class="list-group" itemscope itemtype="http://schema.org/ItemList">
-      {% for error_post in errorpost_list %}
+      {% for error_post in object_list %}
         <a href="{% url 'error_posts:detail' error_post.slug %}" class="list-group-item">
           <h4 class="list-group-item-heading text-danger">{{ error_post.exception_type }} <span class="small">{{ error_post.error_message }}</span></h4>
           <p class="list-group-item-text">Raised by: {{ error_post.raised_by }} (line {{ error_post.raised_by_line }})</p>
         </a>
       {% empty %}
         <div class="list-group-item empty-result">
-          <p class="text-center">No results found. <a href="{% url 'drafts:create' %}">Insert</a> your exception, so we can find a solution for it or <a href="{% url 'error_posts:list' %}">see all exceptions</a>.</p>
+          <p class="text-center">No results found. <a href="{% url 'error_posts:create' %}">Insert</a> your exception, so we can find a solution for it or <a href="{% url 'error_posts:list' %}">see all exceptions</a>.</p>
         </div>
       {% endfor %}
     </ul>

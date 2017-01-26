@@ -3,7 +3,7 @@ import datetime
 from django.contrib.sitemaps import Sitemap
 from django.core.urlresolvers import reverse
 
-from .models import Answer, ErrorPost
+from .models import Answer, ErrorPostPublished
 
 
 class IndexSitemap(Sitemap):
@@ -18,9 +18,9 @@ class IndexSitemap(Sitemap):
 
     def lastmod(self, item):
         try:
-            item = ErrorPost.publisheds.latest('modified')
+            item = ErrorPostPublished.objects.latest('modified')
             return item.answers.latest('modified').modified
-        except ErrorPost.DoesNotExist:
+        except ErrorPostPublished.DoesNotExist:
             return datetime.date.today()
         except Answer.DoesNotExist:
             return item.modified
@@ -31,7 +31,7 @@ class ErrorPostSitemap(Sitemap):
     priority = 0.5
 
     def items(self):
-        return ErrorPost.publisheds.all()
+        return ErrorPostPublished.objects.all()
 
     def location(self, item):
         return reverse('error_posts:detail', kwargs={'slug': item.slug})

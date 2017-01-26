@@ -13,3 +13,8 @@
 .python-version
 .cache/*
 /fix_my_django/settings/local.py
+/node_modules/
+fix.sublime-project
+fix.sublime-workspace
+*.dump
+tox.ini

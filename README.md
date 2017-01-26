@@ -23,3 +23,27 @@ We temporarily deployed compatible versions as `-vinta`, we should come back to 
 Thread: https://github.com/klen/django_markdown/pull/70   
 Vinta's fork: https://github.com/vintasoftware/django_markdown   
 PyPI name: django-markdown-vinta   
+
+## Developing
+
+### Quickstart
+- Create a copy of ``fix_my_django/settings/local.py.example`` in ``fix_my_django/settings/local.py``
+- Create a ``.env`` file in the root of the project and add ``DJANGO_SETTINGS_MODULE="fix_my_django.settings.local"`` to it
+- Create a PostgreSQL named `fixmydjango`
+
+### Running the project
+
+- `pip install -r requirements.txt`
+- `npm install`
+- `python manage.py migrate`
+- `python manage.py bower_install`
+- `python manage.py runserver`
+
+### Running simple
+
+- `make run`
+- `make shell`
+- `make test`
+- `make restore_db` (Get production database)
+
+

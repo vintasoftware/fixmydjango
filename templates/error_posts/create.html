@@ -39,25 +39,6 @@
             </div>
             <div class="row">
               <div class="col-md-12">
-                <h3>Personal Information</h3>
-                <p>We will let you know if we know how to solve your problem</p>
-              </div>
-              <div class="col-md-6">
-                  <div class="form-group required {% if form.author.errors %} has-error {% endif %}">
-                    <label class="text required control-label">Name*</label>
-                    {{ form.author|add_class:'form-control'}}
-                  </div>
-              </div>
-              <div class="col-md-6">
-                <div class="form-group required {% if form.email.errors %}has-error{% endif %}">
-                    <label class="text required control-label">E-mail*
-                    </label>
-                    {{ form.email|add_class:'form-control required'}}
-                </div>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md-12">
                 <div class="pull-right">
                   <div class="g-recaptcha" data-sitekey="{{ RECAPTCHA_KEY }}"></div>
                 </div>

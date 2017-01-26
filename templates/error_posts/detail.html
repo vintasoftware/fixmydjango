@@ -19,29 +19,33 @@
     <pre id="full-traceback" class="collapse"><code>{{ errorpost.sanitized_traceback }}</code></pre>
   </div>
   {% if errorpost.how_to_reproduce %}
-  <div class='col-md-12'>
-    <div class="panel panel-primary">
-      <div class="panel-heading">
-        <h3 class="panel-title">How to reproduce</h3>
-      </div>
-      <div class="panel-body">
-        {{ errorpost.how_to_reproduce|markdown }}
+    <div class='col-md-12'>
+      <div class="panel panel-primary">
+        <div class="panel-heading">
+          <h3 class="panel-title">How to reproduce</h3>
+        </div>
+        <div class="panel-body">
+          {{ errorpost.how_to_reproduce|markdown }}
+        </div>
       </div>
     </div>
-  </div>
   {% endif %}
-  <div class='col-md-12'>
-    <div class="panel panel-success">
-      <div class="panel-heading">
-        <h2 class="panel-title">How to fix</h2>
+  {% with answers=errorpost.answers.all %}
+    {% if answers %}
+      <div class='col-md-12'>
+        <div class="panel panel-success">
+          <div class="panel-heading">
+            <h2 class="panel-title">How to fix</h2>
+          </div>
+          <div class="panel-body">
+            {% for answer in answers %}
+              {{ answer.message|markdown }}
+            {% endfor %}
+          </div>
+        </div>
       </div>
-      <div class="panel-body">
-        {% for answer in errorpost.answers.all %}
-          {{ answer.message|markdown }}
-        {% endfor %}
-      </div>
-    </div>
-  </div>
+    {% endif %}
+  {% endwith %}
 </div>
 
 <!-- Disqus -->
