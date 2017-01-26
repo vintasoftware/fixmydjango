@@ -1,9 +1,10 @@
+from decouple import config
+
 from .base import * # noqa
 
 
 LOCAL = False
 DEBUG = False
-
 
 SECRET_KEY = config('SECRET_KEY')
 
