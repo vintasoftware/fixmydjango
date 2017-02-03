@@ -10,39 +10,42 @@
 {% endblock title %}
 
 {% block content %}
-{% if form.errors and not form.non_field_errors %}
-<p class="errornote">
-{% if form.errors.items|length == 1 %}{% trans "Please correct the error below." %}{% else %}{% trans "Please correct the errors below." %}{% endif %}
-</p>
-{% endif %}
+  <div class="panel register-panel">
+    <div class="panel-create panel-heading">Login</div>
+      <div class="panel-body">
+        {% if form.errors and not form.non_field_errors %}
+          <p class="errornote">
+          {% if form.errors.items|length == 1 %}{% trans "Please correct the error below." %}{% else %}{% trans "Please correct the errors below." %}{% endif %}
+          </p>
+         {% endif %}
 
-{% if form.non_field_errors %}
-{% for error in form.non_field_errors %}
-<p class="errornote">
-    {{ error }}
-</p>
-{% endfor %}
-{% endif %}
-
-<div id="content-main">
-<form action="{{ app_path }}" method="post" id="login-form">{% csrf_token %}
-  <div class="form-row">
-    {{ form.username.errors }}
-    {{ form.username.label_tag }} {{ form.username }}
+         {% if form.non_field_errors %}
+          {% for error in form.non_field_errors %}
+          <p class="errornote">
+              {{ error }}
+          </p>
+          {% endfor %}
+        {% endif %}
+        <form action="{{ app_path }}" method="post" id="login-form">
+          <div class="row">
+            <div class="col-md-12">
+              {% csrf_token %}
+              <div class="form-group {% if form.username.errors %} has-error {% endif %}">
+                <label class="text required control-label">Email</label>
+                {{ form.username|add_class:'form-control'}}
+              </div>
+              <div class="form-group {% if form.password.errors %} has-error {% endif %}">
+                <label class="text required control-label">Password</label>
+                {{ form.password|add_class:'form-control'}}
+                <input type="hidden" name="next" value="{{ next }}" />
+              </div>
+              <div class="password-reset-link">
+                <a href="{% url 'password_reset' %}" class="pull-left">{% trans 'Forgotten your password or username?' %}</a>
+              </div>
+              <button class="btn btn-success pull-right" type="submit">{% trans 'Log in' %}</button>
+            </div>
+          </div>
+        </form>
+    </div>
   </div>
-  <div class="form-row">
-    {{ form.password.errors }}
-    {{ form.password.label_tag }} {{ form.password }}
-    <input type="hidden" name="next" value="{{ next }}" />
-  </div>
-  <div class="password-reset-link">
-    <a href="{% url 'password_reset' %}">{% trans 'Forgotten your password or username?' %}</a>
-  </div>
-  <div class="submit-row">
-    <label>&nbsp;</label><input type="submit" value="{% trans 'Log in' %}" />
-  </div>
-</form>
-
-</div>
 {% endblock %}
-

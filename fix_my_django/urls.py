@@ -32,5 +32,3 @@ urlpatterns = [
 
     url(r'^', include('authtools.urls')),
 ]
-
-handler404 = 'core.views.handler404'

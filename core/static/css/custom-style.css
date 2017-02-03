@@ -6556,4 +6556,9 @@ footer {
   footer p {
     margin-bottom: 0; }
 
+.register-panel {
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto; }
+
 /*# sourceMappingURL=custom-style.css.map */
