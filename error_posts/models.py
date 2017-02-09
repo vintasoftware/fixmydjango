@@ -46,7 +46,7 @@ class ErrorPost(TimeStampedModel):
             try:
                 clean_traceback(self.traceback)
             except ValueError as e:
-                raise ValidationError({'traceback': e.message})
+                raise ValidationError({'traceback': e})
 
     def _get_raised_by(self):
         last_frame = self.parsed_traceback['frames'][-1]
