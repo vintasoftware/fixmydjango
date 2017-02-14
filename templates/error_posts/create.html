@@ -1,11 +1,14 @@
 {% extends 'base.html' %}
 {% load widget_tweaks %}
+{% load django_markdown %}
 
 {% block title %}
   <title>Fix My Django - Insert an Error</title>
 {% endblock title %}
 
 {% block content %}
+<!-- Load the necessary styles for the markdown editor -->
+{% markdown_media %}
   <div class="row">
     <div class="panel" >
       <div class="panel-create panel-heading">Insert an Error</div>
