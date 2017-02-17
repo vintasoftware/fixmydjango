@@ -1,12 +1,16 @@
 {% extends 'base.html' %}
 
 {% load django_markdown %}
+{% load comments %}
+{% load django_markdown %}
 
 {% block title %}
   <title>Fix My Django - {{ errorpost.exception_type }}</title>
 {% endblock title %}
 
 {% block content %}
+<!-- Load the necessary styles for the markdown editor (Comment field) -->
+{% markdown_media %}
 <div class='row error-post-detail-row'>
   <div class='col-md-12'>
     <h1 class="h2 text-danger">{{ errorpost.exception_type }} <span class="small">{{ errorpost.error_message }}</span></h1>
