@@ -13,6 +13,7 @@ from error_posts.sitemaps import (
 
 urlpatterns = [
     url(r'^markdown/', include('django_markdown.urls')),
+    url(r'^comments/', include('django_comments.urls')),
     url(r'^admin/', include(admin.site.urls)),
 
     url(r'^', include('error_posts.urls', namespace='error_posts')),
