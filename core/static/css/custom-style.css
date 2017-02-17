@@ -6561,4 +6561,10 @@ footer {
   margin-left: auto;
   margin-right: auto; }
 
+.comment-panel hr {
+  border-top-color: #44B78B; }
+
+.bold-text {
+  font-weight: bold; }
+
 /*# sourceMappingURL=custom-style.css.map */
