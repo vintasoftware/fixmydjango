@@ -53,6 +53,11 @@
   <div class="col-md-12">
     {% render_comment_list for object %}
   </div>
+  {% if user.is_authenticated %}
+    <div class="col-md-12">
+      {% render_comment_form for object %}
+    </div>
+  {% endif %}
 </div>
 
 {% endblock content %}
