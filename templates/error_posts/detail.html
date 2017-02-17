@@ -50,6 +50,9 @@
       </div>
     {% endif %}
   {% endwith %}
+  <div class="col-md-12">
+    {% render_comment_list for object %}
+  </div>
 </div>
 
 {% endblock content %}
