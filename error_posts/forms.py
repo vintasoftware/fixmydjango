@@ -44,7 +44,4 @@ class ErrorPostForm(forms.ModelForm):
 
 
 class CommentFormWithMarkDown(CommentForm):
-
-    def __init__(self, *args, **kwargs):
-        super(CommentFormWithMarkDown, self).__init__(*args, **kwargs)
-        self.fields['comment'].widget = MarkdownWidget()
+    comment = forms.CharField(widget=MarkdownWidget())
