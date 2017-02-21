@@ -6561,4 +6561,11 @@ footer {
   margin-left: auto;
   margin-right: auto; }
 
+.share-buttons {
+  position: absolute;
+  right: 15px;
+  top: 15%; }
+  .share-buttons a {
+    margin-right: 5px; }
+
 /*# sourceMappingURL=custom-style.css.map */
