@@ -23,6 +23,10 @@
       </button>
     </div>
     <pre id="full-traceback" class="collapse"><code>{{ errorpost.sanitized_traceback }}</code></pre>
+    <div class="ssk-group ssk-rounded share-buttons" data-url="http://fixmydjango.com/exceptions/{{errorpost.slug}}" data-text="Hey, check this error:">
+      <a href="" class="ssk ssk-facebook ssk-sm"></a>
+      <a href="" class="ssk ssk-twitter ssk-sm"></a>
+    </div>
   </div>
   {% if errorpost.how_to_reproduce %}
     <div class='col-md-12'>
