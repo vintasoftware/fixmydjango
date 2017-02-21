@@ -1,10 +1,16 @@
 {% extends 'base.html' %}
 
 {% load django_markdown %}
+{% load staticfiles %}
 
 {% block title %}
   <title>Fix My Django - {{ errorpost.exception_type }}</title>
 {% endblock title %}
+
+{% block extra_css %}
+<!-- Social Share Kit CSS -->
+<link rel="stylesheet" href="{% static 'vendors/social-share-kit/css/social-share-kit.css' %}" type="text/css">
+{% endblock extra_css %}
 
 {% block content %}
 <div class='row error-post-detail-row'>
@@ -62,4 +68,17 @@
     })();
 </script>
 <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+
+{% block js %}
+<!-- Social Share Kit JS -->
+<script type="text/javascript" src="{% static 'vendors/social-share-kit/js/social-share-kit.js' %}"></script>
+<script type="text/javascript">
+  SocialShareKit.init({
+    twitter: {
+      via: null
+    }
+  });
+</script>
+{% endblock js %}
+
 {% endblock content %}
