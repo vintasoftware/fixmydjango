@@ -8,9 +8,10 @@
   </div>
   <div class="panel-body">
     {% for comment in comment_list %}
-      <span class="bold-text">Posted by: {{ comment.user_name }} on {{ comment.submit_date }}</span>
-      {{ comment.comment|markdown }}
-      <hr class="comment-separator">
+      <div class="comment-item">
+        <span class="bold-text">Posted by: {{ comment.user_name }} on {{ comment.submit_date }}</span>
+        {{ comment.comment|markdown }}
+      </div>
     {% endfor %}
   </div>
 </div>
