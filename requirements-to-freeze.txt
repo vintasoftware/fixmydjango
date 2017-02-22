@@ -39,7 +39,7 @@ py==1.4.30
 Pygments==2.0.2
 pylibmc==1.5.1
 pytest-django==2.8.0
-pytest==2.7.2
+pytest==3.0.6
 python-binary-memcached==0.24.3
 python-decouple==3.0
 requests==2.7.0
