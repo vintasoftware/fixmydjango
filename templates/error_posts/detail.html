@@ -50,9 +50,14 @@
       </div>
     {% endif %}
   {% endwith %}
-  <div class="col-md-12">
-    {% render_comment_list for object %}
-  </div>
+
+  {% get_comment_list for object as comment_list %}
+  {% if comment_list %}
+    <div class="col-md-12">
+      {% render_comment_list for object %}
+    </div>
+  {% endif %}
+
   {% if user.is_authenticated %}
     <div class="col-md-12">
       {% render_comment_form for object %}
