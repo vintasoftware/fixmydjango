@@ -35,7 +35,7 @@ libsass==0.8.2
 Markdown==2.6.2
 model-mommy==1.2.4
 psycopg2==2.6
-py==1.4.30
+py==1.4.32
 Pygments==2.0.2
 pylibmc==1.5.1
 pytest-django==2.8.0
