@@ -6561,4 +6561,12 @@ footer {
   margin-left: auto;
   margin-right: auto; }
 
+.comment-panel .panel-body :not(:last-child).comment-item {
+  border-bottom: 1px solid #44B78B;
+  padding-bottom: 20px;
+  margin-bottom: 20px; }
+
+.bold-text {
+  font-weight: bold; }
+
 /*# sourceMappingURL=custom-style.css.map */

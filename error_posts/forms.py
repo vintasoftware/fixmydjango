@@ -3,6 +3,9 @@ import requests
 from django import forms
 from django.conf import settings
 
+from django_comments.forms import CommentForm
+from django_markdown.widgets import MarkdownWidget
+
 from core.utils import get_client_ip
 from error_posts.models import ErrorPost
 
@@ -38,3 +41,7 @@ class ErrorPostForm(forms.ModelForm):
             if not res['success']:
                 raise forms.ValidationError('Invalid Recaptcha')
         return code
+
+
+class CommentFormWithMarkDown(CommentForm):
+    comment = forms.CharField(widget=MarkdownWidget())
