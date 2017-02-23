@@ -179,3 +179,14 @@ footer {
 .bold-text {
   font-weight: bold;
 }
+
+textarea.form-control,
+.form-group .markItUp {
+  width: 100%;
+}
+
+.comment-box-panel-body {
+  padding-top: 0;
+  padding-bottom: 0;
+  margin-left: -10px;
+}
