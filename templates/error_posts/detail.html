@@ -75,7 +75,7 @@
 
   {% else %}
     <div class="col-md-12">
-      <a href="{% url 'login' %}">{% trans 'Login to comment' %}</a>
+      <a href="{% url 'login' %}?next={{ request.path }}">{% trans 'Login to comment' %}</a>
     </div>
   {% endif %}
 </div>
