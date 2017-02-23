@@ -6578,4 +6578,7 @@ textarea.form-control,
   padding-bottom: 0;
   margin-left: -10px; }
 
+.markItUp .markItUpPreviewFrame {
+  height: auto; }
+
 /*# sourceMappingURL=custom-style.css.map */
