@@ -1,7 +1,8 @@
 {% extends 'base.html' %}
 
-{% load django_markdown %}
 {% load comments %}
+{% load django_markdown %}
+{% load i18n static %}
 {% load staticfiles %}
 
 {% block title %}
@@ -70,6 +71,11 @@
   {% if user.is_authenticated %}
     <div class="col-md-12">
       {% render_comment_form for object %}
+    </div>
+
+  {% else %}
+    <div class="col-md-12">
+      <a href="{% url 'login' %}?next={{ request.path }}">{% trans 'Login to comment' %}</a>
     </div>
   {% endif %}
 </div>
