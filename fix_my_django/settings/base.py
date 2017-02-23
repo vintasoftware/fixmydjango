@@ -144,7 +144,6 @@ BOWER_INSTALLED_APPS = (
 
 # Markdown settings
 MARKDOWN_EXTENSIONS = ['extra', 'codehilite']
-MARKDOWN_PROTECT_PREVIEW = True
 
 # Meta tags settings
 # https://github.com/nephila/django-meta#configuration
