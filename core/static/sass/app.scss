@@ -166,6 +166,16 @@ footer {
   margin-right: auto;
 }
 
+.share-buttons {
+  position: absolute;
+  right: 15px;
+  top: 15%;
+
+  a {
+    margin-right: 5px;
+  }
+}
+
 .comment-panel {
   .panel-body {
     :not(:last-child).comment-item {

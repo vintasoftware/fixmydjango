@@ -2,11 +2,16 @@
 
 {% load django_markdown %}
 {% load comments %}
-{% load django_markdown %}
+{% load staticfiles %}
 
 {% block title %}
   <title>Fix My Django - {{ errorpost.exception_type }}</title>
 {% endblock title %}
+
+{% block extra_css %}
+<!-- Social Share Kit CSS -->
+<link rel="stylesheet" href="{% static 'vendors/social-share-kit/css/social-share-kit.css' %}" type="text/css">
+{% endblock extra_css %}
 
 {% block content %}
 <!-- Load the necessary styles for the markdown editor (Comment field) -->
@@ -21,6 +26,10 @@
       </button>
     </div>
     <pre id="full-traceback" class="collapse"><code>{{ errorpost.sanitized_traceback }}</code></pre>
+    <div class="ssk-group ssk-rounded share-buttons" data-url="http://fixmydjango.com/exceptions/{{errorpost.slug}}" data-text="Hey, check this error:">
+      <a href="" class="ssk ssk-facebook ssk-sm"></a>
+      <a href="" class="ssk ssk-twitter ssk-sm"></a>
+    </div>
   </div>
   {% if errorpost.how_to_reproduce %}
     <div class='col-md-12'>
@@ -65,4 +74,15 @@
   {% endif %}
 </div>
 
+{% block js %}
+<!-- Social Share Kit JS -->
+<script type="text/javascript" src="{% static 'vendors/social-share-kit/js/social-share-kit.js' %}"></script>
+<script type="text/javascript">
+  SocialShareKit.init({
+    twitter: {
+      via: null
+    }
+  });
+</script>
+{% endblock js %}
 {% endblock content %}
