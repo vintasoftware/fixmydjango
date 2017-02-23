@@ -15,7 +15,7 @@ django-compressor==2.1
 django-cors-headers==1.1.0
 django-filter==0.13.0
 django-libsass==0.3
-django-log-request-id==1.1.0
+django-log-request-id==1.3.2
 django-markdown-vinta==0.8.4
 django-meta==1.3.1
 django-model-utils==2.2
