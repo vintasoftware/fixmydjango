@@ -4,7 +4,7 @@
 {% get_comment_form for object as form %}
 <div class="panel">
   <div class="panel-create panel-heading">Submit a comment</div>
-  <div class="panel-body">
+  <div class="panel-body comment-box-panel-body">
     <form action="{% comment_form_target %}" method="post">
       {% csrf_token %}
       {{ form.content_type }}
