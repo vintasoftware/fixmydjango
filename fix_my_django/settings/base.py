@@ -38,6 +38,8 @@ INSTALLED_APPS = (
     'django_markdown',
     'meta',
     'bootstrap_pagination',
+    'django_comments',
+    'django.contrib.sites',
 
     # Apps
     'core',
@@ -161,3 +163,9 @@ LOGIN_REDIRECT_URL = '/'
 
 # Auth
 AUTH_USER_MODEL = 'users.User'
+
+# Default value for django.contrib.sites
+SITE_ID = 1
+
+# Comment app
+COMMENTS_APP = 'error_posts'

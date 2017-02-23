@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 
 {% load django_markdown %}
+{% load comments %}
 {% load staticfiles %}
 
 {% block title %}
@@ -13,6 +14,8 @@
 {% endblock extra_css %}
 
 {% block content %}
+<!-- Load the necessary styles for the markdown editor (Comment field) -->
+{% markdown_media %}
 <div class='row error-post-detail-row'>
   <div class='col-md-12'>
     <h1 class="h2 text-danger">{{ errorpost.exception_type }} <span class="small">{{ errorpost.error_message }}</span></h1>
@@ -56,22 +59,20 @@
       </div>
     {% endif %}
   {% endwith %}
+
+  {% get_comment_list for object as comment_list %}
+  {% if comment_list %}
+    <div class="col-md-12">
+      {% render_comment_list for object %}
+    </div>
+  {% endif %}
+
+  {% if user.is_authenticated %}
+    <div class="col-md-12">
+      {% render_comment_form for object %}
+    </div>
+  {% endif %}
 </div>
-
-<!-- Disqus -->
-<div id="disqus_thread"></div>
-<script type="text/javascript">
-    /* * * CONFIGURATION VARIABLES * * */
-    var disqus_shortname = 'fixmydjango';
-
-    /* * * DON'T EDIT BELOW THIS LINE * * */
-    (function() {
-        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-    })();
-</script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
 
 {% block js %}
 <!-- Social Share Kit JS -->
@@ -84,5 +85,4 @@
   });
 </script>
 {% endblock js %}
-
 {% endblock content %}

@@ -4,6 +4,12 @@ from error_posts.mommy_recipes import django_traceback
 from error_posts.models import ErrorPost
 from error_posts.forms import ErrorPostForm
 
+from django_comments.models import Comment
+from django_comments.forms import CommentSecurityForm
+from error_posts.forms import CommentFormWithMarkDown
+from model_mommy import mommy
+from users.models import User
+
 
 class TestErrorPostForm(TestCase):
 
@@ -42,3 +48,23 @@ class TestErrorPostForm(TestCase):
         self.assertEqual(error_post_form['django_version'].field.widget.attrs['readonly'], True)
         self.assertEqual(error_post_form['exception_type'].field.widget.attrs['readonly'], True)
         self.assertEqual(error_post_form['error_message'].field.widget.attrs['readonly'], True)
+
+
+class TestCommentForm(TestCase):
+
+    def setUp(self):
+        self.form = CommentFormWithMarkDown
+        self.params = {
+            'name': 'Alessandro',
+            'email': 'alessandro.henrique@labcodes.com.br',
+            'comment': 'This is a simple comment',
+        }
+        self.user = mommy.make(User)
+        self.security_dict = CommentSecurityForm(self.user).generate_security_data()
+        self.params.update(self.security_dict)
+        self.comment = mommy.make(Comment)
+
+
+    def test_form_is_valid(self):
+        comment_form = self.form(data=self.params, target_object=self.comment)
+        self.assertEqual(comment_form.is_valid(), True)
