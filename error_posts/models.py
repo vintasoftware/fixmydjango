@@ -45,8 +45,11 @@ class ErrorPost(TimeStampedModel):
         if self.traceback:
             try:
                 clean_traceback(self.traceback)
-            except ValueError as e:
-                raise ValidationError({'traceback': e})
+            except ValueError:
+                error_message = "Invalid traceback. Please copy your entire traceback and " \
+                                "paste here. It should start exactly as follow: " \
+                                "'Traceback (most recent call last):'"
+                raise ValidationError({'traceback': error_message})
 
     def _get_raised_by(self):
         last_frame = self.parsed_traceback['frames'][-1]
