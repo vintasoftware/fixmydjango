@@ -6588,4 +6588,15 @@ textarea.form-control,
 .markItUp .markItUpPreviewFrame {
   height: auto; }
 
+/* Links inside the dropdown */
+.dropdown-menu.dropdown-content a {
+  color: #158CBA;
+  text-decoration: none; }
+  .dropdown-menu.dropdown-content a:hover {
+    color: #0d5b7a; }
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+  display: block; }
+
 /*# sourceMappingURL=custom-style.css.map */
