@@ -13,3 +13,9 @@ DJANGO_VERSIONS = Choices(
     ('1.9', '1.9'),
     ('1.10', '1.10'),
 )
+
+
+ERROR_POST_DATA_CAME_FROM = Choices(
+    ('lib', 'Lib'),
+    ('site', 'Site'),
+)
