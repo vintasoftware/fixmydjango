@@ -42,6 +42,14 @@ class ErrorPostForm(forms.ModelForm):
                 raise forms.ValidationError('Invalid Recaptcha')
         return code
 
+    def save(self, data_came_from, commit=True):
+        instance = super(ErrorPostForm, self).save(commit=False)
+        instance.data_came_from = data_came_from
+
+        if commit:
+            instance.save()
+        return instance
+
 
 class CommentFormWithMarkDown(CommentForm):
     comment = forms.CharField(widget=MarkdownWidget())
