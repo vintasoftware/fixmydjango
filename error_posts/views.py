@@ -65,18 +65,23 @@ class ErrorPostCreateView(generic.CreateView):
         return kwargs
 
     def form_valid(self, form):
+        if self.request.GET:
+            form = form.save(data_came_from="lib")
+        else:
+            form = form.save(data_came_from="site")
+
         response = super().form_valid(form)
         messages.info(self.request,
                       "Thank you for adding a new exception! "
                       "Soon its solution will be available.")
         error_post_url = self.request.build_absolute_uri(
-            reverse('admin:error_posts_errorpost_change', args=[self.object.id]))
+            reverse('admin:error_posts_errorpost_change', args=[form.id]))
         send_templated_mail(
             template_name='new_error_post',
             from_email=settings.DEFAULT_FROM_EMAIL,
             recipient_list=['contact@vinta.com.br'],
             context={
-                'error_post': self.object,
+                'error_post': form,
                 'error_post_url': error_post_url})
         return response
 
