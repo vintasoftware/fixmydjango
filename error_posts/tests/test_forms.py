@@ -25,7 +25,7 @@ class TestErrorPostForm(TestCase):
 
     def test_save_form_success(self):
         error_post_form = self.form(self.params)
-        error_post_form.save()
+        error_post_form.save(data_came_from="site")
         error_post_count = ErrorPost.objects.count()
         self.assertEqual(error_post_count, 1)
 
@@ -35,7 +35,7 @@ class TestErrorPostForm(TestCase):
 
     def test_save_form_create_right_object(self):
         error_post_form = self.form(self.params)
-        error_post_form.save()
+        error_post_form.save(data_came_from="site")
         error_post = ErrorPost.objects.first()
         self.assertEqual(error_post.exception_type, self.params['exception_type'])
         self.assertEqual(error_post.error_message, self.params['error_message'])
