@@ -62,7 +62,6 @@ class TestErrorPostForm(TestCase):
         self.assertEqual(error_post.data_came_from, "site")
 
 
-
 class TestCommentForm(TestCase):
 
     def setUp(self):
