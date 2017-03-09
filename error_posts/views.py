@@ -65,6 +65,8 @@ class ErrorPostCreateView(generic.CreateView):
         return kwargs
 
     def form_valid(self, form):
+        # When a user is redirected from the fixmydjango-lib to fixmydjango, the data of the
+        # ErrorPost object is sent in the Url.
         if self.request.GET:
             form = form.save(data_came_from="lib")
         else:
