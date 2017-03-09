@@ -49,6 +49,19 @@ class TestErrorPostForm(TestCase):
         self.assertEqual(error_post_form['exception_type'].field.widget.attrs['readonly'], True)
         self.assertEqual(error_post_form['error_message'].field.widget.attrs['readonly'], True)
 
+    def test_create_error_post_with_data_from_lib(self):
+        error_post_form = self.form(self.params)
+        error_post_form.save(data_came_from="lib")
+        error_post = ErrorPost.objects.first()
+        self.assertEqual(error_post.data_came_from, "lib")
+
+    def test_create_error_post_with_data_from_site(self):
+        error_post_form = self.form(self.params)
+        error_post_form.save(data_came_from="site")
+        error_post = ErrorPost.objects.first()
+        self.assertEqual(error_post.data_came_from, "site")
+
+
 
 class TestCommentForm(TestCase):
 
