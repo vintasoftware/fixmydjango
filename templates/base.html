@@ -60,12 +60,7 @@
         <ul class="nav navbar-nav navbar-right">
           {% if user.is_authenticated %}
             <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-                Account
-              </a>
-              <div class="dropdown-menu right">
-                <a class="dropdown-item" href="{% url 'logout' %}"><i class="ico-user" aria-hidden="true"></i>Logout</a>
-              </div>
+              <a class="nav-link" href="{% url 'logout' %}">Logout</a>
             </li>
 
           {% else %}
