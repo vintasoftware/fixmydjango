@@ -9,7 +9,7 @@ This is the code of the backend which stores Django exceptions data and the weba
 Feel free to fork this project and contribute with it! Take a look at the [issues](https://github.com/fixmydjango/fixmydjango/issues) for known problems.
 
 ## Authors
-Made by pythonistas at [Vinta Software Studio: vinta.com.br](http://www.vinta.com.br/?fixmydjango).
+Made by pythonistas at [Vinta Software Studio: vinta.com.br](http://www.vinta.com.br/?fixmydjango) and [Labcodes Software Studio](http://www.labcodes.com.br/).
 
 ## Development notes
 
