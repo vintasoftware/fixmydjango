@@ -58,6 +58,17 @@
           </ul>
         -->
         <ul class="nav navbar-nav navbar-right">
+          {% if user.is_authenticated %}
+            <li class="nav-item dropdown">
+              <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+            </li>
+
+          {% else %}
+            <li><a href="{% url 'login' %}">Login</a></li>
+            <li><a href="{% url 'signup' %}">Register</a></li>
+          {% endif %}
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
           <li><a href="https://github.com/fixmydjango/fixmydjango/graphs/contributors" target="_blank">Contributors</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
@@ -71,22 +82,6 @@
         </ul>
         <ul class="nav navbar-nav navbar-right">
           <li><a href="{% url 'error_posts:non_published_list' %}">Non published posts</a></li>
-        </ul>
-        <ul class="nav navbar-nav navbar-right">
-          {% if user.is_authenticated %}
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-              {{ user }}
-              </a>
-              <div class="dropdown-menu right">
-                <a class="dropdown-item" href="{% url 'logout' %}"><i class="ico-user" aria-hidden="true"></i>Logout</a>
-              </div>
-            </li>
-
-          {% else %}
-            <li><a href="{% url 'login' %}">Login</a></li>
-            <li><a href="{% url 'signup' %}">Register</a></li>
-          {% endif %}
         </ul>
         <ul class="nav navbar-nav navbar-right">
           <li><a href="{% url 'error_posts:how_it_works' %}">How it works</a></li>
