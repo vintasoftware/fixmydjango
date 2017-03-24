@@ -31,6 +31,11 @@
                   {{ form.error_message|add_class:'form-control'}}
                 </div>
                 <div class="form-group {% if form.traceback.errors %} has-error {% endif %}">
+                  {% if form.traceback.errors %}
+                    {% for error in form.traceback.errors %}
+                      <div class="alert alert-danger">{{ error }}</div>
+                    {% endfor %}
+                  {% endif %}
                   <label class="text required control-label">Traceback*</label>
                   {{ form.traceback|add_class:'form-control'}}
                 </div>
