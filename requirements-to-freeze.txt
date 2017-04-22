@@ -20,7 +20,7 @@ django-model-utils==2.2
 django-naomi==0.7
 django-pylibmc==0.6.1
 django-storages-redux==1.2.3
-django-templated-email==0.5
+django-templated-email==2.1
 django-test-plus==1.0.14
 django-toolbelt==0.0.1
 django-widget-tweaks==1.3
