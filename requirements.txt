@@ -55,5 +55,5 @@ static3==0.5.1
 termcolor==1.1.0
 tox==2.4.1
 unicodecsv==0.14.1
-virtualenv==15.0.3
+virtualenv==15.1.0
 whitenoise==3.2.2
