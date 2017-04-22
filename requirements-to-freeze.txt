@@ -11,7 +11,7 @@ django-bower==5.0.4
 django-braces==1.10.0
 django-compressor==2.1
 django-cors-headers==1.1.0
-django-filter==0.13.0
+django-filter==1.0.1
 django-libsass==0.3
 django-log-request-id==1.1.0
 django-markdown-vinta==0.8.4
