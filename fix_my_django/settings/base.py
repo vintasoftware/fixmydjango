@@ -40,6 +40,7 @@ INSTALLED_APPS = (
     'bootstrap_pagination',
     'django_comments',
     'django.contrib.sites',
+    'anymail',
 
     # Apps
     'core',
