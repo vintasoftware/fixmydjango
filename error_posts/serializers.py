@@ -3,7 +3,14 @@ import urllib
 from rest_framework import serializers
 from rest_framework.reverse import reverse
 
-from .models import ErrorPost
+from .models import ErrorPost, Answer
+
+
+class AnswerSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Answer
+        fields = ('id', 'message')
 
 
 class ErrorPostSearchSerializer(serializers.ListSerializer):
@@ -30,9 +37,11 @@ class ErrorPostSerializer(serializers.ModelSerializer):
     url = serializers.HyperlinkedIdentityField(
         view_name='error_posts:detail',
         lookup_field='slug')
+    answers = AnswerSerializer(many=True)
 
     class Meta:
         model = ErrorPost
         fields = ('id', 'url', 'exception_type', 'error_message',
-                  'raised_by', 'raised_by_line', 'django_version')
+                  'raised_by', 'raised_by_line', 'django_version',
+                  'answers')
         list_serializer_class = ErrorPostSearchSerializer
