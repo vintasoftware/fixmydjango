@@ -10,9 +10,10 @@ DEBUG = True
 SECRET_KEY = 'secret'
 
 DATABASES = {
-    'default': config('DATABASE_URL',
-                      default='postgresql://localhost:5432/fixmydjango',
-                      cast=dj_database_url.parse),
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'fixmydjango',
+    }
 }
 
 STATIC_ROOT = 'staticfiles'
