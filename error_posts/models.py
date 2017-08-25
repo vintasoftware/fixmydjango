@@ -11,7 +11,7 @@ from autoslug import AutoSlugField
 from autoslug.settings import slugify
 
 from fixmydjango.sanitize_tb import clean_traceback, sanitize_traceback
-from .choices import DJANGO_VERSIONS
+from .choices import DJANGO_VERSIONS, ERROR_POST_DATA_CAME_FROM
 from .managers import PublishedManager, NonPublishedManager
 
 
@@ -33,6 +33,7 @@ class ErrorPost(TimeStampedModel):
     how_to_reproduce = MarkdownField(blank=True)
     is_published = models.BooleanField(default=False)
     slug = AutoSlugField(populate_from=_generate_slug, unique=True)
+    data_came_from = models.CharField(choices=ERROR_POST_DATA_CAME_FROM, max_length=255)
 
     objects = models.Manager()
 

@@ -102,3 +102,20 @@ class TestErrorPostCreateView(TestCase):
         self.assertEqual(error_post_form['django_version'].value(), '1.9')
         self.assertEqual(error_post_form['exception_type'].value(), 'TemplateSyntaxError')
         self.assertEqual(error_post_form['error_message'].value(), 'Error')
+
+    def test_create_error_post_with_data_from_lib(self):
+        querystring = (
+            '?traceback=Traceback&django_version=1.9&'
+            'exception_type=TemplateSyntaxError&error_message=Error'
+        )
+        url = '{0}{1}'.format(self.view_url, querystring)
+        response = self.client.post(url, data=self.params)
+        error_post = ErrorPost.objects.first()
+        self.assertEqual(error_post.data_came_from, "lib")
+        self.assertEqual(response.status_code, 302)
+
+    def test_create_error_post_with_data_from_site(self):
+        response = self.client.post(self.view_url, data=self.params)
+        error_post = ErrorPost.objects.first()
+        self.assertEqual(error_post.data_came_from, "site")
+        self.assertEqual(response.status_code, 302)

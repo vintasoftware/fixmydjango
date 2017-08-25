@@ -38,9 +38,9 @@ class HasAnswerListFilter(admin.SimpleListFilter):
 
 class ErrorPostAdmin(admin.ModelAdmin):
     list_display = ['exception_type', 'raised_by', 'django_version', 'slug',
-                    _has_answer, 'is_published']
+                    _has_answer, 'is_published', 'data_came_from']
     list_filter = ['is_published', HasAnswerListFilter, 'django_version',
-                   'exception_type']
+                   'exception_type', 'data_came_from']
     search_fields = ['traceback']
 
     inlines = [AnswerAdmin]
