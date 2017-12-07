@@ -44,6 +44,10 @@ COLLECTFAST_ENABLED = True
 RECAPTCHA_KEY = config('RECAPTCHA_KEY', default='')
 RECAPTCHA_SECRET_KEY = config('RECAPTCHA_SECRET_KEY', default='')
 
+HEROKUAPP_REDIRECT_ACTIVE = True
+PROTOCOL = 'http'
+DOMAIN = 'www.fixmydjango.com'
+
 # caches
 
 # CACHES = {
