@@ -50,7 +50,6 @@ INSTALLED_APPS = (
 
 MIDDLEWARE_CLASSES = (
     'log_request_id.middleware.RequestIDMiddleware',
-    'herokuapp_redirect.middleware.CustomDomainRedirectMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
